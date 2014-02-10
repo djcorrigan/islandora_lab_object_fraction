@@ -1,0 +1,28 @@
+<?php
+
+/**
+  * @file
+  * islandora_bioinformatics_fraction.install
+  */
+
+/**
+  * Implements hook_install().
+  *
+  * @see islandora_bioinformatics_fraction_islandora_required_objects()
+  */
+  function islandora_bioinformatics_fraction_install() {
+    module_load_include('inc', 'islandora', 'includes/solution_packs');
+    islandora_install_solution_pack('islandora_bioinformatics_fraction');
+  }
+
+/**
+  * Implements hook_uninstall().
+  */
+  function islandora_bioinformatics_fraction_uninstall() {
+    module_load_include('inc', 'islandora', 'includes/solution_packs');
+    islandora_install_solution_pack('islandora_bioinformatics_fraction', 'uninstall');
+    $variables = array('islandora_bioinformatics_fraction');
+    array_walk($variables, 'variable_del');
+  }
+
+
