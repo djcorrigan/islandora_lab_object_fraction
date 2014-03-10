@@ -4,7 +4,7 @@
  * */
 function islandora_bioinformatics_fraction_islandora_required_objects(IslandoraTuque $connection) {
   $module_path = drupal_get_path('module', 'islandora_bioinformatics_fraction');
-  $fraction_cm = $connection->repository->constructObject('bioinformatics:fraction');
+  $fraction_cm = $connection->repository->constructObject('bioinformatics:fraction_cm');
   $fraction_cm->owner = 'fedoraAdmin';
   $fraction_cm->label = 'Bioinformatics Fraction Content Model';
   $fraction_cm->models = 'fedora-system:ContentModel-3.0';
