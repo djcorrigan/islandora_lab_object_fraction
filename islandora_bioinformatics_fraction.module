@@ -11,13 +11,26 @@ function islandora_bioinformatics_fraction_islandora_required_objects(IslandoraT
   // DS-COMPOSITE-MODEL Datastream.
   $datastream = $fraction_cm->constructDatastream('DS-COMPOSITE-MODEL', 'X');
   $datastream->mimetype = 'text/xml';
-  $datastream->setContentFromFile("$module_path/xml/fraction_ds_composite_model.xml", FALSE);
+  $datastream->setContentFromFile("$module_path/xml/content_models/islandora_bioinformatics_fraction_ds_composite_model.xml", FALSE);
   $fraction_cm->ingestDatastream($datastream);
+  
+  // Fraction collection
+   $fraction_collection = $connection->repository->constructObject('islandora:fraction_collection');
+   $fraction_collection->owner = 'fedoraAdmin';
+   $fraction_collection->label = 'Fraction Collection';
+   $fraction_collection->models = 'islandora:collectionCModel';
+   $fraction_collection->relationships->add(FEDORA_RELS_EXT_URI, 'isMemberOfCollection', 'islandora:root');
+   $datastream = $person_collection->constructDatastream('COLLECTION_POLICY', 'X');
+   $datastream->mimetype = 'text/xml';
+   $datastream->setContentFromFile("$module_path/xml/collection_policies/islandora_bioinformatics_fraction_collection_policy.xml ", FALSE);
+   $person_collection->ingestDatastream($datastream);
+    
   return array(
     'islandora_bioinformatics_fraction' => array(
       'title' => 'Bioinformatics Fraction',
       'objects' => array(
           $fraction_cm,
+          $fraction_collection,
       ),
     ),
   );
@@ -27,7 +40,7 @@ function islandora_bioinformatics_fraction_islandora_xml_form_builder_forms() {
   $module_path = drupal_get_path('module', 'islandora_bioinformatics_fraction');
   return array(
     'Fraction Form' => array(
-      'form_file' => "$module_path/xml/islandora_bioinformatics_fraction_form.xml",
+      'form_file' => "$module_path/xml/forms/islandora_bioinformatics_fraction_form.xml",
     ),
   );
 }
