@@ -15,15 +15,15 @@ function islandora_bioinformatics_fraction_islandora_required_objects(IslandoraT
   $fraction_cm->ingestDatastream($datastream);
   
   // Fraction collection
-   $fraction_collection = $connection->repository->constructObject('islandora:fraction_collection');
-   $fraction_collection->owner = 'fedoraAdmin';
-   $fraction_collection->label = 'Fraction Collection';
-   $fraction_collection->models = 'islandora:collectionCModel';
-   $fraction_collection->relationships->add(FEDORA_RELS_EXT_URI, 'isMemberOfCollection', 'islandora:root');
-   $datastream = $fraction_collection->constructDatastream('COLLECTION_POLICY', 'X');
-   $datastream->mimetype = 'text/xml';
-   $datastream->setContentFromFile("$module_path/xml/collection_policies/islandora_bioinformatics_fraction_collection_policy.xml ", FALSE);
-   $fraction_collection->ingestDatastream($datastream);
+  $fraction_collection = $connection->repository->constructObject('islandora:fraction_collection');
+  $fraction_collection->owner = 'fedoraAdmin';
+  $fraction_collection->label = 'Fraction Collection';
+  $fraction_collection->models = 'islandora:collectionCModel';
+  $fraction_collection->relationships->add(FEDORA_RELS_EXT_URI, 'isMemberOfCollection', 'islandora:root');
+  $datastream = $fraction_collection->constructDatastream('COLLECTION_POLICY', 'X');
+  $datastream->mimetype = 'text/xml';
+  $datastream->setContentFromFile("$module_path/xml/collection_policies/islandora_bioinformatics_fraction_collection_policy.xml ", FALSE);
+  $fraction_collection->ingestDatastream($datastream);
     
   return array(
     'islandora_bioinformatics_fraction' => array(
