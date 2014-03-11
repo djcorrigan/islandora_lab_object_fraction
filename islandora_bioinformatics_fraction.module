@@ -13,6 +13,8 @@ function islandora_bioinformatics_fraction_islandora_required_objects(IslandoraT
   $datastream->mimetype = 'text/xml';
   $datastream->setContentFromFile("$module_path/xml/content_models/islandora_bioinformatics_fraction_ds_composite_model.xml", FALSE);
   $fraction_cm->ingestDatastream($datastream);
+  // Create relationship with LabObject
+  $fraction_cm->relationships->add(FEDORA_MODEL_URI, 'hasModel', 'islandora:lab_object_cmodel');
   
   // Fraction collection
   $fraction_collection = $connection->repository->constructObject('islandora:fraction_collection');
