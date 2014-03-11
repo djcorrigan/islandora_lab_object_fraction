@@ -59,3 +59,23 @@ function islandora_bioinformatics_fraction_islandora_xml_form_builder_form_assoc
     ),
   );
 }
+
+
+function islandora_bioinformatics_specimen_theme($existing, $type, $theme, $path) {
+  return array(
+    'islandora_bioinformatics_fraction' => array(
+      'file' => 'theme/theme.inc',
+      'template' => 'theme/fraction-theme',
+      'pattern' => 'islandora_bioinformatics_fraction__',
+      'variables' => array('islandora_object' => NULL),
+    ),
+  );
+}
+
+
+function islandora_bioinformatics_fraction_islandora_fraction_cm_islandora_view_object($object, $page_number, $page_size) {
+  $output = theme('islandora_bioinformatics_fraction', array('islandora_object' => $object));
+  return array('' => $output);
+}
+
+
