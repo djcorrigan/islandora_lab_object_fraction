@@ -1,7 +1,21 @@
 <?php
 /**
- * * Implements hook_islandora_required_objects()
- * */
+ * @file
+ * Islandora Bioinformatics Fraction Module
+ * 
+ * @author Nolan Phillips ncphillips@upei.ca
+ * @author Brent Mitton bmitton@upei.ca
+ * @author Natasha Squires nbsquires@upei.ca
+
+/**
+ * Implements hook_islandora_required_objects()
+ * 
+ * @param $connection
+ * An IslandoraTuque object which connects to the Fedora Repository to be altered.
+ * 
+ * @return array
+ * An array containing the Fedora Objects created in this hook. 
+ */
 function islandora_bioinformatics_fraction_islandora_required_objects(IslandoraTuque $connection) {
   $module_path = drupal_get_path('module', 'islandora_bioinformatics_fraction');
   $fraction_cm = $connection->repository->constructObject('islandora:fraction_cmodel');
@@ -38,6 +52,10 @@ function islandora_bioinformatics_fraction_islandora_required_objects(IslandoraT
   );
 }
 
+/**
+ * @return array
+ * An array with a form name as a key, and a path to the form as a value.
+ */
 function islandora_bioinformatics_fraction_islandora_xml_form_builder_forms() {
   $module_path = drupal_get_path('module', 'islandora_bioinformatics_fraction');
   return array(
