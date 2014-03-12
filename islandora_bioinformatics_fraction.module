@@ -4,9 +4,9 @@
  * */
 function islandora_bioinformatics_fraction_islandora_required_objects(IslandoraTuque $connection) {
   $module_path = drupal_get_path('module', 'islandora_bioinformatics_fraction');
-  $fraction_cm = $connection->repository->constructObject('bioinformatics:fraction_cm');
+  $fraction_cm = $connection->repository->constructObject('islandora:fraction_cmodel');
   $fraction_cm->owner = 'fedoraAdmin';
-  $fraction_cm->label = 'Bioinformatics Fraction Content Model';
+  $fraction_cm->label = 'Fraction Content Model';
   $fraction_cm->models = 'fedora-system:ContentModel-3.0';
   // DS-COMPOSITE-MODEL Datastream.
   $datastream = $fraction_cm->constructDatastream('DS-COMPOSITE-MODEL', 'X');
@@ -29,7 +29,7 @@ function islandora_bioinformatics_fraction_islandora_required_objects(IslandoraT
     
   return array(
     'islandora_bioinformatics_fraction' => array(
-      'title' => 'Bioinformatics Fraction',
+      'title' => 'Fraction',
       'objects' => array(
           $fraction_cm,
           $fraction_collection,
@@ -51,7 +51,7 @@ function islandora_bioinformatics_fraction_islandora_xml_form_builder_form_assoc
   $module_path = drupal_get_path('module', 'islandora_bioinformatics_fraction');
   return array(
     'islandora_bioinformatics_fraction_form' => array(
-      'fraction_cm' => 'bioinformatics:fraction',
+      'fraction_cm' => 'islandora:fraction_cmodel',
       'form_name' => 'Fraction Form',
       'dsid' => 'EML',
       'title_field' => array('taxonomy', 'species'),
@@ -75,7 +75,7 @@ function islandora_bioinformatics_specimen_theme($existing, $type, $theme, $path
 }
 
 
-function islandora_bioinformatics_fraction_islandora_fraction_cm_islandora_view_object($object, $page_number, $page_size) {
+function islandora_bioinformatics_fraction_islandora_fraction_cmodel_islandora_view_object($object, $page_number, $page_size) {
   $output = theme('islandora_bioinformatics_fraction', array('islandora_object' => $object));
   return array('' => $output);
 }
