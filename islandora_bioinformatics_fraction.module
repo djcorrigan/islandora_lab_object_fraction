@@ -14,7 +14,8 @@ function islandora_bioinformatics_fraction_menu(){
       'title' => 'Add Fraction',
       'type' => MENU_CALLBACK,
       'page callback' => 'islandora_bioinformatics_fraction_assoc_specimen',
-      'page arguments' => array(2),      // 'file' => 'includes/fraction.inc'
+      'page arguments' => array(2),
+      'file' => 'includes/fraction.inc'
     ),
   );
 }
