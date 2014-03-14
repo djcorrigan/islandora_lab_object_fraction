@@ -26,7 +26,7 @@ function islandora_bioinformatics_fraction_specimen_form(array $form, array &$fo
   
   $form['projects']=array(
       '#type'=>'select',
-      '#title' => t('Projects'),
+      '#title' => t('Specimens'),
       '#options' => $project_array,
        '#multiple' => true,
        '#attributes'=>array('size'=>4),
