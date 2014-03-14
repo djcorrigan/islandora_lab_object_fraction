@@ -6,7 +6,20 @@
  * @author Nolan Phillips ncphillips@upei.ca
  * @author Brent Mitton bmitton@upei.ca
  * @author Natasha Squires nbsquires@upei.ca
+ */
 
+function islandora_bioinformatics_fraction_menu(){
+  echo "DOES THIS EVEN GET CALLED?";
+  return array(
+    //'islandora/object/%specimen_object/add/fraction' => array(
+     // 'title' => 'Add Fraction',
+     // 'type' => MENU_CALLBACK,
+      //'page callback' => 'islandora_bioinformatics_fraction_assoc_specimen',
+      //'page arguments' => array(2),
+     // 'file' => 'includes/fraction.inc'
+    //)
+  );
+}
 /**
  * Implements hook_islandora_required_objects()
  * 
@@ -80,19 +93,7 @@ function islandora_bioinformatics_fraction_islandora_xml_form_builder_form_assoc
   );
 }
 
-function islandora_bioinformatics_fraction_menu(){
-  echo "DOES THIS EVEN GET CALLED?";
-  return array(
-    //'islandora/object/%specimen_object/add/fraction' => array(
-     // 'title' => 'Add Fraction',
-     // 'type' => MENU_CALLBACK,
-      //'page callback' => 'islandora_bioinformatics_fraction_assoc_specimen',
-      //'page arguments' => array(2),
-     // 'file' => 'includes/fraction.inc'
-    //)
-  );
 
-}
 
 
 function islandora_bioinformatics_fraction_theme($existing, $type, $theme, $path) {
