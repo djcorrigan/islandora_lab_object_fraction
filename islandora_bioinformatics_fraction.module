@@ -13,11 +13,11 @@ function islandora_bioinformatics_fraction_menu(){
     'islandora/object/%islandora_object/add/fraction' => array(
       'title' => 'Add Fraction',
       'type' => MENU_CALLBACK,
-      'page callback' => 'islandora_bioinformatics_fraction_assoc_specimen',
-      'page arguments' => array(2),
+      'page callback' => 'drupal_get_form',
+      'page arguments' => array('islandora_bioinformatics_fraction_specimen_form'),
       'access callback' => 'islandora_bioinformatics_fraction_access',
       'access arguments' => array(2),
-      'file' => 'includes/fraction.inc'
+      'file' => 'includes/fraction_relate.form.inc'
     ),
   );
 }
