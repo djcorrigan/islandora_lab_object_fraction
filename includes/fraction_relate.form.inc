@@ -11,7 +11,7 @@ function islandora_bioinformatics_fraction_specimen_form(array $form, array &$fo
   $project_query = "SELECT ?pid
                     FROM <#ri>
                     WHERE {
-                    ?pid <fedora-model:hasModel> <info:fedora/islandora:project_cmodel> .
+                    ?pid <fedora-model:hasModel> <info:fedora/islandora:specimenCM> .
                     }";
   $result = $tuque->repository->ri->sparqlQuery($project_query, 'unlimited');
   
