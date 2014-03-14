@@ -88,7 +88,7 @@ function islandora_bioinformatics_fraction_menu(){
       'page callback' => 'islandora_bioinformatics_fraction_assoc_specimen',
       'page arguments' => array(2),
       'file' => 'includes/fraction.inc'
-    );
+    )
   );
 }
 function islandora_bioinformatics_fraction_theme($existing, $type, $theme, $path) {
