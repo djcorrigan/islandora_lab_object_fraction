@@ -1,4 +1,7 @@
 <?php
+/**
+ * @file
+ */
 // here's where you can change the $variables array before the page is loaded
 
 
