@@ -15,9 +15,16 @@ function islandora_bioinformatics_fraction_menu(){
       'type' => MENU_CALLBACK,
       'page callback' => 'islandora_bioinformatics_fraction_assoc_specimen',
       'page arguments' => array(2),
+      'access callback' => 'islandora_bioinformatics_fraction_access',
+      'access arguments' => array(2),
       'file' => 'includes/fraction.inc'
     ),
   );
+}
+
+
+function islandora_bioinformatics_fraction_access($object){
+  return true;
 }
 /**
  * Implements hook_islandora_required_objects()
