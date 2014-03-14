@@ -1,7 +1,6 @@
 <?php
 
-function islandora_bioinformatics_fraction_assoc_specimen($derr){
-  echo "BIPEUfpasdbfapiufdbasipf";
+function islandora_bioinformatics_fraction_assoc_specimen($object){
+  var_dump($object);
   exit(0);
-  return $derr;
 }
