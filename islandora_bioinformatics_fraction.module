@@ -10,7 +10,7 @@
 
 function islandora_bioinformatics_fraction_menu(){
   return array(
-    'islandora/object/%/add/fraction' => array(
+    'islandora/object/%specimen_object/add/fraction' => array(
       'title' => 'Add Fraction',
       'type' => MENU_CALLBACK,
       'page callback' => 'islandora_bioinformatics_fraction_assoc_specimen',
