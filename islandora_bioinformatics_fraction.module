@@ -81,6 +81,7 @@ function islandora_bioinformatics_fraction_islandora_xml_form_builder_form_assoc
 }
 
 function islandora_bioinformatics_fraction_menu(){
+  echo "DOES THIS EVEN GET CALLED?";
   return array(
     'islandora/object/%specimen_object/add/fraction' => array(
       'title' => 'Add Fraction',
