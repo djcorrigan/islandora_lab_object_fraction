@@ -131,6 +131,7 @@ function islandora_bioinformatics_fraction_islandora_xml_form_builder_form_assoc
 
 
 
+
 function islandora_bioinformatics_fraction_theme($existing, $type, $theme, $path) {
   return array(
     'islandora_bioinformatics_fraction' => array(
@@ -148,4 +149,14 @@ function islandora_bioinformatics_fraction_islandora_fraction_cmodel_islandora_v
   return array('' => $output);
 }
 
-
+function islandora_bioinformatics_fraction_islandora_fraction_cmodel_islandora_ingest_steps(array $configuration){
+  return array(
+    'islandora_bioinformatics_fraction_specimen_form' => array(
+      'weight' => 10,
+      'type' => 'form',
+      'form_id' => 'islandora_bioinformatics_fraction_specimen_form',
+      'module' => 'islandora_bioinformatics_fraction',
+      'file' => 'includes/fraction_relate.form.inc'
+    )
+  );
+}
