@@ -27,35 +27,11 @@ function islandora_bioinformatics_fraction_menu(){
 }
 
 
-/**
-   * @author ncphillips <ncphillips@upei.ca>
-   * 
-   * @param $object_id
-   * This is the PID of an object.
-   * 
-   * @return $object
-   * If $object_id references a Fedora Object with the specimen cmodel, then the object
-   * is returned, else return Null. If $object_id does not reference a Fedora Object,
-   * return Null or False.
-   * 
-   */
-function specimen_object_load($object_id) {
-  $object = islandora_object_load($object_id);
-  if ($object) {
-    if (in_array('islandora:specimen_cmodel', $object->models)){
-      return $object;
-    }
-    return NULL;
-  }
-  else {
-    return $object;
-  }
-}
-
-
 function islandora_bioinformatics_fraction_access($object){
   return true;
 }
+
+
 /**
  * Implements hook_islandora_required_objects()
  * 
