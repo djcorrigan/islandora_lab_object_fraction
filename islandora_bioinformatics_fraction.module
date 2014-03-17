@@ -10,10 +10,16 @@
 
 /**
  * @author Brent Mitton bmitton@upei.ca
- * 
+ * @author Nolan Phillips ncphillips@upei.ca
  */
 function islandora_bioinformatics_fraction_menu(){
   return array(
+    /**
+     * @author Brent Mitton bmitton@upei.ca
+     * 
+     * A URL which begins the ingestion process for a new Fraction to
+     * be associated with this specimen.
+     */
     'islandora/object/%specimen_object/add/fraction' => array(
       'title' => 'Add Fraction',
       'type' => MENU_CALLBACK,
@@ -23,6 +29,23 @@ function islandora_bioinformatics_fraction_menu(){
       'access arguments' => array(2),
       'file' => 'includes/fraction_relate.form.inc'
     ),
+    
+    /**
+     * @author Nolan Phillips ncphillips@upei.ca
+     * 
+     * Creates a tab alongside the Manage and View tabs which links to a page
+     * listing the fractions derived from this specimen.
+     */ 
+    'islandora/object/%specimen_object/fractions' => array(
+      'title' => 'Fractions',
+      'type' => MENU_LOCAL_TASK,
+      'description' => 'A list of fractions derived from this specimen.',
+      'page callback' => 'specimen_fractions',
+      'page arguments' => array(2),
+      'access callback' => 'islandora_object_access_callback',
+      'access arguments' => array(ISLANDORA_VIEW_OBJECTS, 2),
+      'file' => 'includes/manage_specimen.inc'
+      )
   );
 }
 
