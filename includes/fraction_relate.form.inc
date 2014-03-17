@@ -36,3 +36,18 @@ function islandora_bioinformatics_fraction_specimen_form(array $form, array &$fo
   return $form;
 
 }
+
+
+function islandora_bioinformatics_fraction_specimen_submit(array $form, array &$form_state){
+  $tuque = new IslandoraTuque();
+
+  $fraction_object = $form_state['islandora']['objects'][0];
+
+  $specimen_ids = array_filter($form_state['values']['specimens']);
+  
+  
+  foreach ($specimen_ids as $id){
+  	$fraction_object->relationships->add($id, 'isPartOf', 'islandora:specimenCM');
+  	
+  }
+}
