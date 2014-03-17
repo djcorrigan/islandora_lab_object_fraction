@@ -44,7 +44,7 @@ function islandora_bioinformatics_fraction_menu(){
       'page arguments' => array(2),
       'access callback' => 'islandora_object_access_callback',
       'access arguments' => array(ISLANDORA_VIEW_OBJECTS, 2),
-      'file' => 'includes/manage_specimen.inc'
+      'file' => 'includes/manage_fraction.inc'
       )
   );
 }
