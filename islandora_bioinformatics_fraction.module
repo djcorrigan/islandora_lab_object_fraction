@@ -77,7 +77,7 @@ function islandora_bioinformatics_fraction_islandora_required_objects(IslandoraT
   $fraction_cm->ingestDatastream($datastream);
   // Create relationship with LabObject
   $fraction_cm->relationships->add(FEDORA_MODEL_URI, 'hasModel', 'islandora:lab_object_cmodel');
-  $fraction_cm->relationships->add(FEDORA_MODEL_URI, 'datarel_specimen', 'islandora:specimen_cmodel');
+  //$fraction_cm->relationships->add(FEDORA_MODEL_URI, 'datarel_specimen', 'islandora:specimen_cmodel');
 
   // Fraction collection
   $fraction_collection = $connection->repository->constructObject('islandora:fraction_collection');
