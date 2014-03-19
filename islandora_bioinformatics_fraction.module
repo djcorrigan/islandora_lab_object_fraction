@@ -163,3 +163,9 @@ function islandora_bioinformatics_fraction_islandora_fraction_cmodel_islandora_i
     )
   );
 }
+
+function islandora_bioinformatics_fraction_mytesthook(){
+  return "TEST HOOK COMPLETE";
+}
+
+
