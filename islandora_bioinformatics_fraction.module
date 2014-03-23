@@ -152,8 +152,7 @@ function islandora_bioinformatics_fraction_islandora_fraction_cmodel_islandora_v
 }
 
 function islandora_bioinformatics_fraction_islandora_fraction_cmodel_islandora_ingest_steps(array $configuration){
-  echo "test";
-  exit(0);
+
   return array(
     'islandora_bioinformatics_fraction_specimen_form' => array(
       'weight' => 10,
