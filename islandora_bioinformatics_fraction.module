@@ -12,7 +12,7 @@
  * @author Brent Mitton bmitton@upei.ca
  * @author Nolan Phillips ncphillips@upei.ca
  */
-function islandora_bioinformatics_fraction_menu(){
+function islandora_bioinformatics_fraction_menu() {
   return array(
     /**
      * @author Brent Mitton bmitton@upei.ca
@@ -50,8 +50,8 @@ function islandora_bioinformatics_fraction_menu(){
 }
 
 
-function islandora_bioinformatics_fraction_access($object){
-  return true;
+function islandora_bioinformatics_fraction_access($object) {
+  return TRUE;
 }
 
 
@@ -150,7 +150,7 @@ function islandora_bioinformatics_fraction_islandora_fraction_cmodel_islandora_v
   return array('' => $output);
 }
 
-function islandora_bioinformatics_fraction_islandora_fraction_cmodel_islandora_ingest_steps(array $configuration){
+function islandora_bioinformatics_fraction_islandora_fraction_cmodel_islandora_ingest_steps(array $configuration) {
 
   return array(
     'islandora_bioinformatics_fraction_specimen_form' => array(
@@ -163,7 +163,7 @@ function islandora_bioinformatics_fraction_islandora_fraction_cmodel_islandora_i
   );
 }
 
-function islandora_bioinformatics_fraction_mytesthook(){
+function islandora_bioinformatics_fraction_mytesthook() {
   return "TEST HOOK COMPLETE";
 }
 

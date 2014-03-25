@@ -6,6 +6,6 @@
  * Time: 11:04 AM
  */
 
- function islandora_bioinformatics_fraction_list($parent){
+ function islandora_bioinformatics_fraction_list($parent) {
    return "We're in.";
  }
