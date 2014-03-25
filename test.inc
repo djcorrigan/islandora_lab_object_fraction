@@ -1,5 +1,8 @@
 <?php
 /**
+ *
+ * @file test.inc
+ *
  * Created by PhpStorm.
  * User: n
  * Date: 2014-03-18
