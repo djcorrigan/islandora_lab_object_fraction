@@ -38,7 +38,7 @@ function islandora_bioinformatics_fraction_specimen_form(array $form, array &$fo
       '#title' => t('Specimens'),
       '#options' => $specimen_array,
        '#multiple' => TRUE,
-       '#attributes' => array('size'=>4),
+       '#attributes' => array('size' => 4),
        '#weight' => 8,
   );
   

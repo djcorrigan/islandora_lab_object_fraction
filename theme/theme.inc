@@ -1,6 +1,6 @@
 <?php
 /**
- * @file
+ * @file theme.inc
  */
 // here's where you can change the $variables array before the page is loaded
 
