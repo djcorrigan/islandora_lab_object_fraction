@@ -12,20 +12,21 @@
  * @author Brent Mitton bmitton@upei.ca
  * @author Nolan Phillips ncphillips@upei.ca
  */
-function islandora_bioinformatics_fraction_menu() {
+function islandora_lab_object_fraction_menu() {
   return array(
     /**
      * @author Brent Mitton bmitton@upei.ca
      * 
      * A URL which begins the ingestion process for a new Fraction to
      * be associated with this specimen.
+     *
      */
     'islandora/object/%specimen_object/add/fraction' => array(
       'title' => 'Add Fraction',
       'type' => MENU_CALLBACK,
       'page callback' => 'drupal_get_form',
-      'page arguments' => array('islandora_bioinformatics_fraction_specimen_form'),
-      'access callback' => 'islandora_bioinformatics_fraction_access',
+      'page arguments' => array('islandora_lab_object_fraction_specimen_form'),
+      'access callback' => 'islandora_lab_object_fraction_access',
       'access arguments' => array(2),
       'file' => 'includes/fraction_relate.form.inc'
     ),
@@ -50,7 +51,7 @@ function islandora_bioinformatics_fraction_menu() {
 }
 
 
-function islandora_bioinformatics_fraction_access($object) {
+function islandora_lab_object_fraction_access($object) {
   return TRUE;
 }
 
@@ -64,8 +65,8 @@ function islandora_bioinformatics_fraction_access($object) {
  * @return array
  * An array containing the Fedora Objects created in this hook. 
  */
-function islandora_bioinformatics_fraction_islandora_required_objects(IslandoraTuque $connection) {
-  $module_path = drupal_get_path('module', 'islandora_bioinformatics_fraction');
+function islandora_lab_object_fraction_islandora_required_objects(IslandoraTuque $connection) {
+  $module_path = drupal_get_path('module', 'islandora_lab_object_fraction');
   $fraction_cm = $connection->repository->constructObject('islandora:fraction_cmodel');
   $fraction_cm->owner = 'fedoraAdmin';
   $fraction_cm->label = 'Fraction Content Model';
@@ -73,7 +74,7 @@ function islandora_bioinformatics_fraction_islandora_required_objects(IslandoraT
   // DS-COMPOSITE-MODEL Datastream.
   $datastream = $fraction_cm->constructDatastream('DS-COMPOSITE-MODEL', 'X');
   $datastream->mimetype = 'text/xml';
-  $datastream->setContentFromFile("$module_path/xml/content_models/islandora_bioinformatics_fraction_ds_composite_model.xml", FALSE);
+  $datastream->setContentFromFile("$module_path/xml/content_models/islandora_lab_object_fraction_ds_composite_model.xml", FALSE);
   $fraction_cm->ingestDatastream($datastream);
   // Create relationship with LabObject
   $fraction_cm->relationships->add(FEDORA_MODEL_URI, 'hasModel', 'islandora:lab_object_cmodel');
@@ -88,11 +89,11 @@ function islandora_bioinformatics_fraction_islandora_required_objects(IslandoraT
   $fraction_collection->relationships->add(FEDORA_RELS_EXT_URI, 'isMemberOfCollection', 'islandora:root');
   $datastream = $fraction_collection->constructDatastream('COLLECTION_POLICY', 'X');
   $datastream->mimetype = 'text/xml';
-  $datastream->setContentFromFile("$module_path/xml/collection_policies/islandora_bioinformatics_fraction_collection_policy.xml", FALSE);
+  $datastream->setContentFromFile("$module_path/xml/collection_policies/islandora_lab_object_fraction_collection_policy.xml", FALSE);
   $fraction_collection->ingestDatastream($datastream);
     
   return array(
-    'islandora_bioinformatics_fraction' => array(
+    'islandora_lab_object_fraction' => array(
       'title' => 'Fraction',
       'objects' => array(
           $fraction_cm,
@@ -106,25 +107,25 @@ function islandora_bioinformatics_fraction_islandora_required_objects(IslandoraT
  * @return array
  * An array with a form name as a key, and a path to the form as a value.
  */
-function islandora_bioinformatics_fraction_islandora_xml_form_builder_forms() {
-  $module_path = drupal_get_path('module', 'islandora_bioinformatics_fraction');
+function islandora_lab_object_fraction_islandora_xml_form_builder_forms() {
+  $module_path = drupal_get_path('module', 'islandora_lab_object_fraction');
   return array(
     'Fraction Form' => array(
-      'form_file' => "$module_path/xml/forms/islandora_bioinformatics_fraction_form.xml",
+      'form_file' => "$module_path/xml/forms/islandora_lab_object_fraction_form.xml",
     ),
   );
 }
 
-function islandora_bioinformatics_fraction_islandora_xml_form_builder_form_associations() {
-  $module_path = drupal_get_path('module', 'islandora_bioinformatics_fraction');
+function islandora_lab_object_fraction_islandora_xml_form_builder_form_associations() {
+  $module_path = drupal_get_path('module', 'islandora_lab_object_fraction');
   return array(
-    'islandora_bioinformatics_fraction_form' => array(
+    'islandora_lab_object_fraction_form' => array(
       'fraction_cm' => 'islandora:fraction_cmodel',
       'form_name' => 'Fraction Form',
       'dsid' => 'EML',
       'title_field' => array('taxonomy', 'species'),
       'transform' => '',
-      //'self_transform' => "$module_path/xml/islandora_bioinformatics_fraction_transform.xsl",
+      //'self_transform' => "$module_path/xml/islandora_lab_object_fraction_transform.xsl",
       'template' => FALSE,
     ),
   );
@@ -134,38 +135,32 @@ function islandora_bioinformatics_fraction_islandora_xml_form_builder_form_assoc
 
 
 
-function islandora_bioinformatics_fraction_theme($existing, $type, $theme, $path) {
+function islandora_lab_object_fraction_theme($existing, $type, $theme, $path) {
   return array(
-    'islandora_bioinformatics_fraction' => array(
+    'islandora_lab_object_fraction' => array(
       'file' => 'theme/theme.inc',
       'template' => 'theme/fraction-theme',
-      'pattern' => 'islandora_bioinformatics_fraction__',
+      'pattern' => 'islandora_lab_object_fraction__',
       'variables' => array('islandora_object' => NULL),
     ),
   );
 }
 
 
-function islandora_bioinformatics_fraction_islandora_fraction_cmodel_islandora_view_object($object, $page_number, $page_size) {
-  $output = theme('islandora_bioinformatics_fraction', array('islandora_object' => $object));
+function islandora_lab_object_fraction_islandora_fraction_cmodel_islandora_view_object($object, $page_number, $page_size) {
+  $output = theme('islandora_lab_object_fraction', array('islandora_object' => $object));
   return array('' => $output);
 }
 
-function islandora_bioinformatics_fraction_islandora_fraction_cmodel_islandora_ingest_steps(array $configuration) {
+function islandora_lab_object_fraction_islandora_fraction_cmodel_islandora_ingest_steps(array $configuration) {
 
   return array(
-    'islandora_bioinformatics_fraction_specimen_form' => array(
+    'islandora_lab_object_fraction_specimen_form' => array(
       'weight' => 10,
       'type' => 'form',
-      'form_id' => 'islandora_bioinformatics_fraction_specimen_form',
-      'module' => 'islandora_bioinformatics_fraction',
+      'form_id' => 'islandora_lab_object_fraction_specimen_form',
+      'module' => 'islandora_lab_object_fraction',
       'file' => 'includes/fraction_relate.form.inc'
     )
   );
 }
-
-function islandora_bioinformatics_fraction_mytesthook() {
-  return "TEST HOOK COMPLETE";
-}
-
-
