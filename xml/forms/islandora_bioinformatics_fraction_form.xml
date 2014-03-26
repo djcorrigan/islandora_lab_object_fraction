@@ -1,4 +1,3 @@
-<?xml version="1.0"?>
 <definition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="3">
   <properties>
     <root_name>fraction:assay</root_name>
@@ -41,8 +40,14 @@
               <prefix>NULL</prefix>
               <value>type</value>
             </create>
-            <read>NULL</read>
-            <update>NULL</update>
+            <read>
+              <path>/fraction:assay/fraction:type</path>
+              <context>document</context>
+            </read>
+            <update>
+              <path>self::node()</path>
+              <context>self</context>
+            </update>
             <delete>NULL</delete>
           </actions>
         </properties>
@@ -70,8 +75,14 @@
               <prefix>NULL</prefix>
               <value>id</value>
             </create>
-            <read>NULL</read>
-            <update>NULL</update>
+            <read>
+              <path>/fraction:assay/fraction:id</path>
+              <context>document</context>
+            </read>
+            <update>
+              <path>self::node()</path>
+              <context>self</context>
+            </update>
             <delete>NULL</delete>
           </actions>
         </properties>
@@ -99,8 +110,14 @@
               <prefix>NULL</prefix>
               <value>labid</value>
             </create>
-            <read>NULL</read>
-            <update>NULL</update>
+            <read>
+              <path>/fraction:assay/fraction:labid</path>
+              <context>document</context>
+            </read>
+            <update>
+              <path>self::node()</path>
+              <context>self</context>
+            </update>
             <delete>NULL</delete>
           </actions>
         </properties>
@@ -128,8 +145,14 @@
               <prefix>NULL</prefix>
               <value>weight</value>
             </create>
-            <read>NULL</read>
-            <update>NULL</update>
+            <read>
+              <path>/fraction:assay/fraction:weight</path>
+              <context>document</context>
+            </read>
+            <update>
+              <path>self::node()</path>
+              <context>self</context>
+            </update>
             <delete>NULL</delete>
           </actions>
         </properties>
@@ -157,8 +180,14 @@
               <prefix>NULL</prefix>
               <value>plate</value>
             </create>
-            <read>NULL</read>
-            <update>NULL</update>
+            <read>
+              <path>/fraction:assay/fraction:plate</path>
+              <context>document</context>
+            </read>
+            <update>
+              <path>self::node()</path>
+              <context>self</context>
+            </update>
             <delete>NULL</delete>
           </actions>
         </properties>
@@ -186,8 +215,14 @@
               <prefix>NULL</prefix>
               <value>location</value>
             </create>
-            <read>NULL</read>
-            <update>NULL</update>
+            <read>
+              <path>/fraction:assay/fraction:location</path>
+              <context>document</context>
+            </read>
+            <update>
+              <path>self::node()</path>
+              <context>self</context>
+            </update>
             <delete>NULL</delete>
           </actions>
         </properties>
@@ -215,8 +250,14 @@
               <prefix>NULL</prefix>
               <value>notes</value>
             </create>
-            <read>NULL</read>
-            <update>NULL</update>
+            <read>
+              <path>/fraction:assay/fraction:notes</path>
+              <context>document</context>
+            </read>
+            <update>
+              <path>self::node()</path>
+              <context>self</context>
+            </update>
             <delete>NULL</delete>
           </actions>
         </properties>
