@@ -1,0 +1,122 @@
+<?php
+/**
+ * @file
+ * Islandora Bioinformatics Fraction Module
+ * 
+ * @author Nolan Phillips ncphillips@upei.ca
+ * @author Brent Mitton bmitton@upei.ca
+ * @author Natasha Squires nbsquires@upei.ca
+ */
+
+function islandora_lab_object_assay_access($object) {
+  return TRUE;
+}
+
+/**
+ * Implements hook_islandora_required_objects()
+ * 
+ * @param $connection
+ * An IslandoraTuque object which connects to the Fedora Repository to be altered.
+ * 
+ * @return array
+ * An array containing the Fedora Objects created in this hook. 
+ */
+function islandora_lab_object_assay_islandora_required_objects(IslandoraTuque $connection) {
+  $module_path = drupal_get_path('module', 'islandora_lab_object_assay');
+  $assay_cm = $connection->repository->constructObject('islandora:assay_cmodel');
+  $assay_cm->owner = 'fedoraAdmin';
+  $assay_cm->label = 'Fraction Content Model';
+  $assay_cm->models = 'fedora-system:ContentModel-3.0';
+  // DS-COMPOSITE-MODEL Datastream.
+  $datastream = $assay_cm->constructDatastream('DS-COMPOSITE-MODEL', 'X');
+  $datastream->mimetype = 'text/xml';
+  $datastream->setContentFromFile("$module_path/xml/content_models/islandora_lab_object_assay_ds_composite_model.xml", FALSE);
+  $assay_cm->ingestDatastream($datastream);
+  // Create relationship with LabObject
+  $assay_cm->relationships->add(FEDORA_MODEL_URI, 'hasModel', 'islandora:lab_object_cmodel');
+  // Remove word _specimen and just have datarel
+  $assay_cm->relationships->add("", 'datarel_specimen', 'islandora:specimen_cmodel');
+
+  // Fraction collection
+  $assay_collection = $connection->repository->constructObject('islandora:assay_collection');
+  $assay_collection->owner = 'fedoraAdmin';
+  $assay_collection->label = 'Fraction Collection';
+  $assay_collection->models = 'islandora:collectionCModel';
+  $assay_collection->relationships->add(FEDORA_RELS_EXT_URI, 'isMemberOfCollection', 'islandora:root');
+  $datastream = $assay_collection->constructDatastream('COLLECTION_POLICY', 'X');
+  $datastream->mimetype = 'text/xml';
+  $datastream->setContentFromFile("$module_path/xml/collection_policies/islandora_lab_object_assay_collection_policy.xml", FALSE);
+  $assay_collection->ingestDatastream($datastream);
+    
+  return array(
+    'islandora_lab_object_assay' => array(
+      'title' => 'Fraction',
+      'objects' => array(
+          $assay_cm,
+          $assay_collection,
+      ),
+    ),
+  );
+}
+
+/**
+ * @return array
+ * An array with a form name as a key, and a path to the form as a value.
+ */
+function islandora_lab_object_assay_islandora_xml_form_builder_forms() {
+  $module_path = drupal_get_path('module', 'islandora_lab_object_assay');
+  return array(
+    'Fraction Form' => array(
+      'form_file' => "$module_path/xml/forms/islandora_lab_object_assay_form.xml",
+    ),
+  );
+}
+
+function islandora_lab_object_assay_islandora_xml_form_builder_form_associations() {
+  $module_path = drupal_get_path('module', 'islandora_lab_object_assay');
+  return array(
+    'islandora_lab_object_assay_form' => array(
+      'assay_cm' => 'islandora:assay_cmodel',
+      'form_name' => 'Fraction Form',
+      'dsid' => 'EML',
+      'title_field' => array('taxonomy', 'species'),
+      'transform' => '',
+      //'self_transform' => "$module_path/xml/islandora_lab_object_assay_transform.xsl",
+      'template' => FALSE,
+    ),
+  );
+}
+
+
+
+
+
+function islandora_lab_object_assay_theme($existing, $type, $theme, $path) {
+  return array(
+    'islandora_lab_object_assay' => array(
+      'file' => 'theme/theme.inc',
+      'template' => 'theme/assay-theme',
+      'pattern' => 'islandora_lab_object_assay__',
+      'variables' => array('islandora_object' => NULL),
+    ),
+  );
+}
+
+
+function islandora_lab_object_assay_islandora_assay_cmodel_islandora_view_object($object, $page_number, $page_size) {
+  $output = theme('islandora_lab_object_assay', array('islandora_object' => $object));
+  return array('' => $output);
+}
+
+function islandora_lab_object_assay_islandora_assay_cmodel_islandora_ingest_steps(array $configuration) {
+
+  return array(
+    'islandora_lab_object_assay_specimen_form' => array(
+      'weight' => 10,
+      'type' => 'form',
+      'form_id' => 'islandora_lab_object_assay_specimen_form',
+      'module' => 'islandora_lab_object_assay',
+      'file' => 'includes/assay_relate.form.inc'
+    )
+  );
+}

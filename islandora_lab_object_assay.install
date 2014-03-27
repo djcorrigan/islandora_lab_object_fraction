@@ -1,0 +1,28 @@
+<?php
+
+/**
+  * @file
+  * islandora_lab_object_assay.install
+  */
+
+/**
+  * Implements hook_install().
+  *
+  * @see islandora_lab_object_assay_islandora_required_objects()
+  */
+  function islandora_lab_object_assay_install() {
+    module_load_include('inc', 'islandora', 'includes/solution_packs');
+    islandora_install_solution_pack('islandora_lab_object_assay');
+  }
+
+/**
+  * Implements hook_uninstall().
+  */
+  function islandora_lab_object_assay_uninstall() {
+    module_load_include('inc', 'islandora', 'includes/solution_packs');
+    islandora_install_solution_pack('islandora_lab_object_assay', 'uninstall');
+    $variables = array('islandora_lab_object_assay');
+    array_walk($variables, 'variable_del');
+  }
+
+
