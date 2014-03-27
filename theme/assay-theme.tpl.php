@@ -8,7 +8,7 @@
  * function.  Elements such as labels and buttons can be added here
  */
 
-$path = drupal_get_path('module', 'islandora_lab_object_fraction');
+$path = drupal_get_path('module', 'islandora_lab_object_assay');
 
 
 echo "<pre>";
