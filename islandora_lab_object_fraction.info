@@ -1,9 +1,0 @@
-name = "Islandora Fraction Lab Object"
-description = "Extends the Islandora Bioinformatics Package to deal with Fraction data."
-dependencies[] = islandora
-dependencies[] = islandora_lab_object_base
-dependencies[] = islandora_lab_object_specimen
-package = Islandora Bioinformatics
-version = 7.x-dev
-core = 7.x
-configure = admin/islandora/bioinformatics/fraction
