@@ -2,14 +2,14 @@
 
 /*
 *
-* @file fraction_relate.form.inc
+* @file assay_relate.form.inc
 *
 * 
 *
 */
 
 
-function islandora_bioinformatics_fraction_specimen_form(array $form, array &$form_state) {
+function islandora_lab_object_assay_specimen_form(array $form, array &$form_state) {
   
   // connect to the fedora repo. Apparently this function can be called from anywhere and it will
   // work.
@@ -47,15 +47,15 @@ function islandora_bioinformatics_fraction_specimen_form(array $form, array &$fo
 }
 
 
-function islandora_bioinformatics_fraction_specimen_submit(array $form, array &$form_state) {
+function islandora_lab_object_assay_specimen_submit(array $form, array &$form_state) {
   $tuque = new IslandoraTuque();
 
-  $fraction_object = $form_state['islandora']['objects'][0];
+  $assay_object = $form_state['islandora']['objects'][0];
 
   $specimen_ids = array_filter($form_state['values']['specimens']);
   
   
   foreach ($specimen_ids as $id) {
-    $fraction_object->relationships->add($id, 'isPartOf', 'islandora:specimenCM');
+    $assay_object->relationships->add($id, 'isPartOf', 'islandora:specimenCM');
   }
 }

@@ -1,16 +1,16 @@
 <?php
 /**
- * @file manage_fraction.inc
+ * @file manage_assay.inc
  */
  
  
  /**
   * @TODO
-  * Find and list all fraction objects that were derived from
+  * Find and list all assay objects that were derived from
   * passed in Specimen object. This page should also have a link
-  * to the 'islandora/objects/%specimen_object/add/fraction' URL
-  * described in islandora_bioinformatics_fraction_menu().
+  * to the 'islandora/objects/%specimen_object/add/assay' URL
+  * described in islandora_lab_object_assay_menu().
   */
- function specimen_fractions(AbstractObject $specimen) {
+ function specimen_assays(AbstractObject $specimen) {
    return "INCOMPLETE
  }
