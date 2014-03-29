@@ -13,6 +13,25 @@
   function islandora_lab_object_assay_install() {
     module_load_include('inc', 'islandora', 'includes/solution_packs');
     islandora_install_solution_pack('islandora_lab_object_assay');
+
+    // the available inhibitors. I don't like doing it this way.
+    _islandora_lab_object_assay_default_insert("P1B", "PTB1B");
+    _islandora_lab_object_assay_default_insert("HC", "HCT116");
+    _islandora_lab_object_assay_default_insert("HE", "HELA");
+    _islandora_lab_object_assay_default_insert("PC", "PC3");
+    _islandora_lab_object_assay_default_insert("ARE", "ARE");
+    _islandora_lab_object_assay_default_insert("AP", "Antiproliferative");
+    _islandora_lab_object_assay_default_insert("SA", "Staphlococcus aureus");
+    _islandora_lab_object_assay_default_insert("EF", "Enterococcus faecalis");
+    _islandora_lab_object_assay_default_insert("PA", "Pseudomonas aeruginosa");
+    _islandora_lab_object_assay_default_insert("CA", "Candida Albicans");
+    _islandora_lab_object_assay_default_insert("MRSA", "MRSA");
+    _islandora_lab_object_assay_default_insert("VRE", "VRE");
+    _islandora_lab_object_assay_default_insert("MD", "Mycobacterium diernhoferi");
+    _islandora_lab_object_assay_default_insert("ME", "Mycobacterium smegmatis");
+    _islandora_lab_object_assay_default_insert("MF", "Mycobacterium terrae");
+    _islandora_lab_object_assay_default_insert("LO", "Lypoxygenase");
+
   }
 
 /**
@@ -37,7 +56,7 @@
  */
 function islandora_lab_object_assay_schema(){
   // I have no idea if inhibitors is the correct word
-  $schema["labobject_assay_inhibitors"] = array(
+  $schema["labobject_assay_inhibitor"] = array(
     'description' => 'Holds autocomplete data for inhibitors',
     'fields' => array(
       'abbreviation' => array(
@@ -59,4 +78,11 @@ function islandora_lab_object_assay_schema(){
   );
 
   return $schema;
+}
+
+function _islandora_lab_object_assay_default_insert($abbr, $name){
+  $sql = "INSERT INTO {labobject_assay_inhibitor} (abbrevation, name)
+          VALUES ('$abbr', '$name')";
+
+  db_query($sql);
 }
