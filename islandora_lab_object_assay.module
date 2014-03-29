@@ -8,6 +8,20 @@
  * @author Natasha Squires nbsquires@upei.ca
  */
 
+function islandora_lab_object_assay_menu(){
+  return array(
+    'assay/assays' => array(
+      'title' => "Autocomplete Assays",
+      'page callback' => "_assay_autocomplete",
+      'access arguments' => TRUE,
+      'type' => MENU_CALLBACK,
+    ),
+  );
+}
+
+
+
+
 function islandora_lab_object_assay_access($object) {
   return TRUE;
 }
@@ -125,4 +139,22 @@ function islandora_lab_object_assay_islandora_assay_cmodel_islandora_ingest_step
       'file' => 'includes/assay_relate.form.inc'
     )
   );
+}
+
+
+function _assay_autocomplete($string){
+  $matches = array();
+
+  $result = db_select('labobject_assay_assay', 'a')
+      ->fields('a', array('abbreviation', 'name'))
+      ->condition('abbreviation', '%' . db_like($string) . '%', 'LIKE')
+      ->db_or()
+      ->condition('name', '%' . db_like($string) . '%', 'LIKE')
+      ->execute();
+  // save the query to matches
+  foreach ($result as $row) {
+    $matches[$row->abbr] = check_plain($row->name);
+  }
+
+  drupal_json_output($matches);
 }
