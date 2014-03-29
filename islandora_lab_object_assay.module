@@ -147,7 +147,7 @@ function _assay_autocomplete($string){
 
    $or = db_or()
        ->condition('abbreviation', '%' . db_like($string) . '%', 'LIKE')
-       ->condition('name', '%' . db_like($string) . '%', 'LIKE')
+       ->condition('name', '%' . db_like($string) . '%', 'LIKE');
 
   $result = db_select('labobject_assay_assay', 'a')
       ->fields('a', array('abbreviation', 'name'))
