@@ -26,3 +26,37 @@
   }
 
 
+/**
+ * @author Brent Mitton
+ * @return
+ * returns a database schema
+ *
+ * My understanding of this hook is that it is used both when the sp is
+ * installed and uninstalled. Upon install it will create the db table defined
+ * and on uninstallation it will remove it.
+ */
+function islandora_lab_object_assay_schema(){
+  // I have no idea if inhibitors is the correct word
+  $schema["labobject_assay_inhibitors"] = array(
+    'description' => 'Holds autocomplete data for inhibitors',
+    'fields' => array(
+      'abbreviation' => array(
+        'description' => 'Abbr for inhibitors.',
+        'type' => 'varchar',
+        'length' => 15, //15 is probably a bit long. but better than being short
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'name' => array(
+        'description' => "Full name of inhibitor",
+        'type' => 'varchar',
+        'length' => 50,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+    ),
+    'primary key' => array('abbreviation'),
+  );
+
+  return $schema;
+}
