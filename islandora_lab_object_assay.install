@@ -56,7 +56,7 @@
  */
 function islandora_lab_object_assay_schema(){
   // I have no idea if inhibitors is the correct word
-  $schema["labobject_assay_inhibitor"] = array(
+  $schema["labobject_assay_assay"] = array(
     'description' => 'Holds autocomplete data for inhibitors',
     'fields' => array(
       'abbreviation' => array(
@@ -81,7 +81,7 @@ function islandora_lab_object_assay_schema(){
 }
 
 function _islandora_lab_object_assay_default_insert($abbr, $name){
-  $sql = "INSERT INTO {labobject_assay_inhibitor} (abbreviation, name)
+  $sql = "INSERT INTO {labobject_assay_assay} (abbreviation, name)
           VALUES ('$abbr', '$name')";
 
   db_query($sql);
