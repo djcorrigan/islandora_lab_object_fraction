@@ -51,8 +51,8 @@ function islandora_lab_object_assay_islandora_required_objects(IslandoraTuque $c
   $assay_collection->ingestDatastream($datastream);
 
   $specimen_cm = islandora_object_load("islandora:specimen_cmodel");
-  //add_hasPart($specimen_cm, "islandora:assay_cmodel");
-  //add_isPartOf($assay_cm, "islandora:specimen_cmodel");
+  add_hasPart($specimen_cm, "islandora:assay_cmodel");
+  add_isPartOf($assay_cm, "islandora:specimen_cmodel");
     
   return array(
     'islandora_lab_object_assay' => array(
