@@ -145,11 +145,13 @@ function islandora_lab_object_assay_islandora_assay_cmodel_islandora_ingest_step
 function _assay_autocomplete($string){
   $matches = array();
 
+   $or = db_or()
+       ->condition('abbreviation', '%' . db_like($string) . '%', 'LIKE')
+       ->condition('name', '%' . db_like($string) . '%', 'LIKE')
+
   $result = db_select('labobject_assay_assay', 'a')
       ->fields('a', array('abbreviation', 'name'))
-      ->condition('abbreviation', '%' . db_like($string) . '%', 'LIKE')
-      ->db_or()
-      ->condition('name', '%' . db_like($string) . '%', 'LIKE')
+      ->condition($or)
       ->execute();
   // save the query to matches
   foreach ($result as $row) {
