@@ -155,7 +155,7 @@ function _assay_autocomplete($string){
       ->execute();
   // save the query to matches
   foreach ($result as $row) {
-    $matches[$row->abbr] = check_plain($row->name);
+    $matches[$row->abbr] = check_plain($row->abbreviation) . " - " . check_plain($row->name) ;
   }
 
   drupal_json_output($matches);
