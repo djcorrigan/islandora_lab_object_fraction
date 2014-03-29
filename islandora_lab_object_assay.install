@@ -81,7 +81,7 @@ function islandora_lab_object_assay_schema(){
 }
 
 function _islandora_lab_object_assay_default_insert($abbr, $name){
-  $sql = "INSERT INTO {labobject_assay_inhibitor} (abbrevation, name)
+  $sql = "INSERT INTO {labobject_assay_inhibitor} (abbreviation, name)
           VALUES ('$abbr', '$name')";
 
   db_query($sql);
