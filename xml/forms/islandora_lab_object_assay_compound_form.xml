@@ -24,7 +24,7 @@
                     <access>TRUE</access>
                     <collapsed>FALSE</collapsed>
                     <collapsible>FALSE</collapsible>
-                    <default_value>fraction</default_value>
+                    <default_value>compound</default_value>
                     <disabled>FALSE</disabled>
                     <executes_submit_callback>FALSE</executes_submit_callback>
                     <multiple>FALSE</multiple>
@@ -44,10 +44,7 @@
                             <path>/fraction:assay/fraction:type</path>
                             <context>document</context>
                         </read>
-                        <update>
-                            <path>self::node()</path>
-                            <context>self</context>
-                        </update>
+                        <update>NULL</update>
                         <delete>NULL</delete>
                     </actions>
                 </properties>
@@ -308,7 +305,7 @@
                                 <properties>
                                     <type>textfield</type>
                                     <access>TRUE</access>
-                                    <autocomplete_path>assays/assays</autocomplete_path>
+                                    <autocomplete_path>assay/assays</autocomplete_path>
                                     <collapsed>FALSE</collapsed>
                                     <collapsible>FALSE</collapsible>
                                     <disabled>FALSE</disabled>

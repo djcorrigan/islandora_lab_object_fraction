@@ -85,32 +85,50 @@ function islandora_lab_object_assay_islandora_required_objects(IslandoraTuque $c
  */
 function islandora_lab_object_assay_islandora_xml_form_builder_forms() {
   $module_path = drupal_get_path('module', 'islandora_lab_object_assay');
-  return array(
-    'Fraction Form' => array(
+  $forms = array(
+    'Assay Form' => array(
       'form_file' => "$module_path/xml/forms/islandora_lab_object_assay_form.xml",
     ),
+    'Compound Form' => array(
+      'form_file' => "$module_path/xml/forms/islandora_lab_object_assay_compound_form.xml",
+    ),
   );
+  return $forms;
 }
 
+/**
+ * @return array
+ * returns default form associations
+ */
 function islandora_lab_object_assay_islandora_xml_form_builder_form_associations() {
   $module_path = drupal_get_path('module', 'islandora_lab_object_assay');
-  return array(
+  $form_assoc = array(
     'islandora_lab_object_assay_form' => array(
-      'assay_cm' => 'islandora:assay_cmodel',
-      'form_name' => 'Fraction Form',
-      'dsid' => 'EML',
-      'title_field' => array('taxonomy', 'species'),
+      'content_model' => "islandora:assay_cmodel",
+      'form_name' => 'Assay Form',
+      'dsid' => 'fraction',
       'transform' => '',
-      //'self_transform' => "$module_path/xml/islandora_lab_object_assay_transform.xsl",
+      'template' => FALSE,
+    ),
+    'islandora_lab_object_assay_compound_form' => array(
+      'content_model' => "islandora:assay_cmodel",
+      'form_name' => 'Compound Form',
+      'dsid' => 'fraction',
+      'transform' => '',
       'template' => FALSE,
     ),
   );
+  return $form_assoc;
 }
 
 
-
-
-
+/**
+ * @param $existing
+ * @param $type
+ * @param $theme
+ * @param $path
+ * @return array
+ */
 function islandora_lab_object_assay_theme($existing, $type, $theme, $path) {
   return array(
     'islandora_lab_object_assay' => array(
@@ -122,12 +140,21 @@ function islandora_lab_object_assay_theme($existing, $type, $theme, $path) {
   );
 }
 
-
+/**
+ * @param $object
+ * @param $page_number
+ * @param $page_size
+ * @return array
+ */
 function islandora_lab_object_assay_islandora_assay_cmodel_islandora_view_object($object, $page_number, $page_size) {
   $output = theme('islandora_lab_object_assay', array('islandora_object' => $object));
   return array('' => $output);
 }
 
+/**
+ * @param array $configuration
+ * @return array
+ */
 function islandora_lab_object_assay_islandora_assay_cmodel_islandora_ingest_steps(array $configuration) {
 
   return array(
@@ -142,6 +169,12 @@ function islandora_lab_object_assay_islandora_assay_cmodel_islandora_ingest_step
 }
 
 
+/**
+ * @author Brent Mitton
+ * @param $string
+ * Takes in part of a string that is currently being typed into a textbox
+ * and then does a mysql LIKE query. For autocompletion on assay forms
+ */
 function _assay_autocomplete($string){
   $matches = array();
 
