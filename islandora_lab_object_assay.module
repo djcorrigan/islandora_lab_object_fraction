@@ -16,18 +16,6 @@ function islandora_lab_object_assay_menu(){
       'access arguments' => TRUE,
       'type' => MENU_CALLBACK,
     ),
-    
-    /**
-    * @author Quintin Dawson
-    * Test URL for triggering assay ingest
-    */
-    'islandora/object/%islandora_object/test_assay_ingest' => array(
-      'page callback' => 'rel_lab_object_assay_ingest',
-      'page arguments' => array(2),
-      'access callback' => TRUE,
-      'type' => MENU_CALLBACK,
-      'title' => 'Test Assay Ingest',
-    ),
   );
 }
 
@@ -171,12 +159,4 @@ function _assay_autocomplete($string){
   }
 
   drupal_json_output($matches);
-}
-
-/**
-* @author Quintin Dawson
-* Will trigger the ingest process for an Assay object and will automatically create a relationship between the ingested object and $object
-*/
-function rel_lab_object_assay_ingest($object) {
-  dpm($object);
 }
