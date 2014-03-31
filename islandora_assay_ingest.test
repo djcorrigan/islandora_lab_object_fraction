@@ -90,7 +90,7 @@ class IslandoraAssayIngestTestCase extends IslandoraWebTestCase {
     $assay_datastream_dc['control_group'] = 'M'; //M - managed by Fedora, X - in line XML
     $assay_datastream_dc['mimetype'] = 'text/xml';
 
-    $assay_datastream_mads = array(); //Init the MADS datastream
+    $assay_datastream_mads = array(); //Init the FRACTION datastream
     $assay_datastream_mads['dsid'] = 'FRACTION'; //dsid comes from the ds composite model in the xml directory
     $assay_datastream_mads['path'] = 'fixtures/example_assay_fraction.xml'; //Path to the file containing the datastream
     $assay_datastream_mads['control_group'] = 'M'; //M - managed by Fedora, X - in line XML
@@ -122,7 +122,7 @@ class IslandoraAssayIngestTestCase extends IslandoraWebTestCase {
   * islandora:test_assay
   */
 
-  public function purgeTestForPersonandProject() {  
+  public function purgeTestForAssay() {  
     
     $this->deleteObject('islandora:test_assay', $button = NULL, $safety = TRUE);
   }
