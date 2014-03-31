@@ -116,6 +116,7 @@ function islandora_lab_object_assay_islandora_xml_form_builder_form_associations
       'dsid' => 'fraction',
       'transform' => '',
       'template' => FALSE,
+      'title_field' => array('id'),
     ),
     'islandora_lab_object_assay_compound_form' => array(
       'content_model' => "islandora:assay_cmodel",
@@ -123,6 +124,7 @@ function islandora_lab_object_assay_islandora_xml_form_builder_form_associations
       'dsid' => 'fraction',
       'transform' => '',
       'template' => FALSE,
+      'title_field' => array('id'),
     ),
   );
   return $form_assoc;
