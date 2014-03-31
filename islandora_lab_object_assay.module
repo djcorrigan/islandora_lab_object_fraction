@@ -6,6 +6,7 @@
  * @author Nolan Phillips ncphillips@upei.ca
  * @author Brent Mitton bmitton@upei.ca
  * @author Natasha Squires nbsquires@upei.ca
+ * @author Quintin Dawson qdawson@upei.ca
  */
 
 function islandora_lab_object_assay_menu(){
@@ -16,6 +17,12 @@ function islandora_lab_object_assay_menu(){
       'access arguments' => TRUE,
       'type' => MENU_CALLBACK,
     ),
+    'islandora/object/%islandora_object/test_ingest_assay' => array(
+        'title' => 'Ingest Assay',
+        'page callback' => 'rel_lab_object_assay_ingest',
+        'page arguments' => array(2),
+        'access callback' => TRUE,
+      )
   );
 }
 
@@ -192,4 +199,13 @@ function _assay_autocomplete($string){
   }
 
   drupal_json_output($matches);
+}
+
+
+/**
+* @author Quintin Dawson qdawson@upei.ca
+*/
+function rel_lab_object_assay_ingest($object) {
+
+
 }
