@@ -126,3 +126,4 @@ class IslandoraAssayIngestTestCase extends IslandoraWebTestCase {
     
     $this->deleteObject('islandora:test_assay', $button = NULL, $safety = TRUE);
   }
+}
