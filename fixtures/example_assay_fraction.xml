@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<fraction:assay xmlns:fraction="http://www.upeikerrlab.ca" xmlns="http://www.upeikerrlab.ca">
+  <fraction:type>Test Assay</fraction:type>
+  <fraction:id>Test ID for a test</fraction:id>
+  <fraction:labid>A test Lab ID for a Test</fraction:labid>
+  <fraction:weight>Really heavy + 5 kg</fraction:weight>
+  <fraction:plate>The nice red one.</fraction:plate>
+  <fraction:location>In the lab.</fraction:location>
+  <fraction:notes>Are good things to take in a lab.</fraction:notes>
+  <fraction:inhibitor><fraction:name>Assay 1</fraction:name><fraction:result>Inactive</fraction:result><fraction:comment></fraction:comment></fraction:inhibitor>
+</fraction:assay>

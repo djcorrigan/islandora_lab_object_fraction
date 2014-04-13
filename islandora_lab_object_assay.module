@@ -6,6 +6,7 @@
  * @author Nolan Phillips ncphillips@upei.ca
  * @author Brent Mitton bmitton@upei.ca
  * @author Natasha Squires nbsquires@upei.ca
+ * @author Quintin Dawson qdawson@upei.ca
  */
 
 function islandora_lab_object_assay_menu(){
@@ -16,7 +17,55 @@ function islandora_lab_object_assay_menu(){
       'access arguments' => TRUE,
       'type' => MENU_CALLBACK,
     ),
+    'islandora/object/%islandora_object/test_ingest_assay' => array(
+        'title' => 'Ingest Assay',
+        'page callback' => 'rel_lab_object_assay_ingest',
+        'page arguments' => array(2),
+        'access callback' => TRUE,
+      )
   );
+}
+
+function islandora_lab_object_assay_forms($form_id, $args){
+  /**
+   * @author Nolan Phillips ncphillips@upei.ca
+   *
+   * @param $form_id
+   * @param $args
+   * @return $forms
+   *
+   * Implements hook_forms($form_id, $args)
+   *
+   * This function is used to associate a new Form ID with an existing form constructor.
+   */
+  $forms = array();
+  switch($form_id){
+    /**
+     * ## Related Assays Form
+     * __Form ID:__ `related_assay_form`
+     *
+     * __Form Base ID:__ `related_islandora_objects_form`
+     *
+     * Creates a `related_islandora_objects_form` with the `$cmodel` and `$relationships`
+     * arguments set as:
+     *
+     *      $cmodels = array('islandora:assay_cmodel');
+     *      $relationships = array(FEDORA_RELS_EXT_URI => array('isPartOf'),);
+     */
+    case 'related_assay_form':
+      $cmodels = array('islandora:assay_cmodel');
+      $relationships = array(FEDORA_RELS_EXT_URI => array('isPartOf', 'isMemberOf',),);
+
+      $args[] = $cmodels;
+      $args[] = $relationships;
+
+      $forms['related_assay_form'] = array(
+        'callback' => 'related_islandora_objects_form',
+        'callback arguments' => $args,
+      );
+      break;
+  }
+  return $forms;
 }
 
 
@@ -109,6 +158,7 @@ function islandora_lab_object_assay_islandora_xml_form_builder_form_associations
       'dsid' => 'fraction',
       'transform' => '',
       'template' => FALSE,
+      'title_field' => array('id'),
     ),
     'islandora_lab_object_assay_compound_form' => array(
       'content_model' => "islandora:assay_cmodel",
@@ -116,6 +166,7 @@ function islandora_lab_object_assay_islandora_xml_form_builder_form_associations
       'dsid' => 'fraction',
       'transform' => '',
       'template' => FALSE,
+      'title_field' => array('id'),
     ),
   );
   return $form_assoc;
@@ -192,4 +243,13 @@ function _assay_autocomplete($string){
   }
 
   drupal_json_output($matches);
+}
+
+
+/**
+* @author Quintin Dawson qdawson@upei.ca
+*/
+function rel_lab_object_assay_ingest($object) {
+
+
 }
