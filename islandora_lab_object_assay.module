@@ -119,7 +119,7 @@ function islandora_lab_object_assay_islandora_required_objects(IslandoraTuque $c
     
   return array(
     'islandora_lab_object_assay' => array(
-      'title' => 'Fraction',
+      'title' => 'Assay',
       'objects' => array(
           $assay_cm,
           $assay_collection,
