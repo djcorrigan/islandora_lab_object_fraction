@@ -105,7 +105,7 @@ function islandora_lab_object_assay_islandora_required_objects(IslandoraTuque $c
   // Fraction collection
   $assay_collection = $connection->repository->constructObject('islandora:assay_collection');
   $assay_collection->owner = 'fedoraAdmin';
-  $assay_collection->label = 'Fraction Collection';
+  $assay_collection->label = 'Assay Collection';
   $assay_collection->models = 'islandora:collectionCModel';
   $assay_collection->relationships->add(FEDORA_RELS_EXT_URI, 'isMemberOfCollection', 'islandora:root');
   $datastream = $assay_collection->constructDatastream('COLLECTION_POLICY', 'X');
@@ -245,6 +245,28 @@ function _assay_autocomplete($string){
   drupal_json_output($matches);
 }
 
+/**
+ * Takes in an assay object and returns an array.
+ * @param $assay_object
+ *  An islandora assay object
+ * @return array
+ *  A simple array containing the assay information
+ */
+function assay_object_to_array($assay_object){
+
+  $ns = "http://www.upeikerrlabs.ca";
+  $assay_array = array();
+
+  $assay_xml = new SimpleXMLElement($assay_object["fraction"]->content);
+
+
+  foreach($assay_xml->children($ns) as $part){
+
+    echo $part->getName();
+  }
+
+  die;
+}
 
 /**
 * @author Quintin Dawson qdawson@upei.ca
