@@ -85,7 +85,9 @@ function islandora_lab_object_assay_access($object) {
  * An array containing the Fedora Objects created in this hook. 
  */
 function islandora_lab_object_assay_islandora_required_objects(IslandoraTuque $connection) {
+  echo "hellllo"; die;
   module_load_include('inc', 'islandora_bioinformatics_base', 'base_functions');
+
 
   $module_path = drupal_get_path('module', 'islandora_lab_object_assay');
   $assay_cm = $connection->repository->constructObject('islandora:assay_cmodel');
