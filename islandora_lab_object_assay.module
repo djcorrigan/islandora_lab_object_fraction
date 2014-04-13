@@ -26,6 +26,48 @@ function islandora_lab_object_assay_menu(){
   );
 }
 
+function islandora_lab_object_assay_forms($form_id, $args){
+  /**
+   * @author Nolan Phillips ncphillips@upei.ca
+   *
+   * @param $form_id
+   * @param $args
+   * @return $forms
+   *
+   * Implements hook_forms($form_id, $args)
+   *
+   * This function is used to associate a new Form ID with an existing form constructor.
+   */
+  $forms = array();
+  switch($form_id){
+    /**
+     * ## Related Assays Form
+     * __Form ID:__ `related_assay_form`
+     *
+     * __Form Base ID:__ `related_islandora_objects_form`
+     *
+     * Creates a `related_islandora_objects_form` with the `$cmodel` and `$relationships`
+     * arguments set as:
+     *
+     *      $cmodels = array('islandora:assay_cmodel');
+     *      $relationships = array(FEDORA_RELS_EXT_URI => array('isPartOf'),);
+     */
+    case 'related_assay_form':
+      $cmodels = array('islandora:assay_cmodel');
+      $relationships = array(FEDORA_RELS_EXT_URI => array('isPartOf', 'isMemberOf',),);
+
+      $args[] = $cmodels;
+      $args[] = $relationships;
+
+      $forms['related_assay_form'] = array(
+        'callback' => 'related_islandora_objects_form',
+        'callback arguments' => $args,
+      );
+      break;
+  }
+  return $forms;
+}
+
 
 
 
