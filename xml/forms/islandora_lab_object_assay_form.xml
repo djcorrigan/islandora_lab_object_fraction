@@ -308,7 +308,7 @@
                                 <properties>
                                     <type>textfield</type>
                                     <access>TRUE</access>
-                                    <autocomplete_path>assays/assays</autocomplete_path>
+                                    <autocomplete_path>assay/assays</autocomplete_path>
                                     <collapsed>FALSE</collapsed>
                                     <collapsible>FALSE</collapsible>
                                     <disabled>FALSE</disabled>
