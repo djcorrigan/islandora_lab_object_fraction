@@ -91,7 +91,7 @@ function islandora_lab_object_assay_islandora_required_objects(IslandoraTuque $c
   $module_path = drupal_get_path('module', 'islandora_lab_object_assay');
   $assay_cm = $connection->repository->constructObject('islandora:assay_cmodel');
   $assay_cm->owner = 'fedoraAdmin';
-  $assay_cm->label = 'Fraction Content Model';
+  $assay_cm->label = 'Assay Content Model';
   $assay_cm->models = 'fedora-system:ContentModel-3.0';
   // DS-COMPOSITE-MODEL Datastream.
   $datastream = $assay_cm->constructDatastream('DS-COMPOSITE-MODEL', 'X');
