@@ -276,7 +276,7 @@ function assay_object_to_array($assay_object){
  * This function should create a new assay object and create a relationship between it and the $parent object
  */
 
-function islandora_bioinformatics_assay_lab_object_genesequence_ingest(AbstractObject $parent) {
+function islandora_bioinformatics_assay_lab_object_assay_ingest(AbstractObject $parent) {
   $collection = islandora_object_load('islandora:assay_collection');
   if($collection !== FALSE) {
     if (($configuration = islandora_bioinformatics_assay_lab_object_load_ingest_configuration($collection)) !== FALSE) {
