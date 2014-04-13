@@ -113,6 +113,8 @@ function islandora_lab_object_assay_islandora_required_objects(IslandoraTuque $c
   $datastream->setContentFromFile("$module_path/xml/collection_policies/islandora_lab_object_assay_collection_policy.xml", FALSE);
   $assay_collection->ingestDatastream($datastream);
 
+  echo "HELLLLO";
+  die;
   $specimen_cm = islandora_object_load("islandora:specimen_cmodel");
   add_hasPart($specimen_cm, "islandora:assay_cmodel");
   add_isPartOf($assay_cm, "islandora:specimen_cmodel");
