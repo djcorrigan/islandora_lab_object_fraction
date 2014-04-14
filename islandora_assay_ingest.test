@@ -25,7 +25,7 @@ class IslandoraAssayIngestTestCase extends IslandoraWebTestCase {
     return array(
       'name' => 'Assay Ingest Test',
       'description' => 'Ingests an assay',
-      'group' => 'Islandora Base',
+      'group' => 'Islandora Assay',
     );
   }
 
