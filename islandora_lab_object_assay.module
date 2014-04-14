@@ -361,7 +361,7 @@ function islandora_lab_object_assay_load_ingest_configuration(AbstractObject $co
 
   return array(
     'collection' => $collection,
-    'models' => array_keys($policy->getContentModels()),
+    'models' => array('islandora:assay_cmodel'), //array_keys($policy->getContentModels()),
     'objects' => array($object),
     'parent' => $collection->id,
   );
