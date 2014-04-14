@@ -9,4 +9,3 @@
 $path = drupal_get_path('module', 'islandora_lab_object_assay');
 
 ?>
-<div>hi?</div>
