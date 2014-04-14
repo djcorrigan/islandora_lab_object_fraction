@@ -23,8 +23,8 @@ class IslandoraAssayIngestTestCase extends IslandoraWebTestCase {
 
   public static function getInfo() {
     return array(
-      'name' => 'Assay Ingest Test',
-      'description' => 'Ingests an assay',
+      'name' => 'Assay Ingest/Purge Test',
+      'description' => 'Ingests and deletes an assay',
       'group' => 'Islandora Assay',
     );
   }
@@ -116,23 +116,12 @@ class IslandoraAssayIngestTestCase extends IslandoraWebTestCase {
     catch (RepositoryException $re) {
       echo 'Caught exception: ', $re->getMessage(), "\n";
     }
-  }
 
-  /**
-  * @function purgeTestForAssay
-  *
-  * @Author Dalton Mackenzie <demackenzie@upei.ca>
-  *
-  * This function tests deleting the Assay object with pid:
-  *
-  * islandora:test_assay
-  */
-
-  public function purgeTestForAssay() {  
-    
     //We can turn off the safety here because we know exactly what's being deleted,
     //and it's only within the test framework, not the actual database.
 
+
+    //Delete the object
     $this->deleteObject('islandora:test_assay', $button = NULL, $safety = FALSE);
   }
 }
