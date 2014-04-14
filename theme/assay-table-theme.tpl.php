@@ -2,7 +2,7 @@
 
   .assay-table td{
     padding: 0px;
-    width: 10px
+    width: 10px;
     font-size: 10px;
   }
   .assay-table th{
