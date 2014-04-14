@@ -17,7 +17,7 @@ function islandora_lab_object_assay_menu(){
       'access arguments' => TRUE,
       'type' => MENU_CALLBACK,
     ),
-    'islandora/object/%islandora_object/people' => array(
+    'islandora/object/%islandora_object/fractions' => array(
       'title' => 'Fractions',
       'type' => MENU_LOCAL_TASK,
       'description' => "Fractions associated with this object",
