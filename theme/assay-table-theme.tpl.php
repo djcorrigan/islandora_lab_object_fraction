@@ -1,4 +1,7 @@
 <style>
+  .assay-table{
+    width:100%;
+  }
   .assay-hit{
     background-color: red;
   }
@@ -34,7 +37,10 @@
     $form_assays = array("P1B", "HC", "HE", "PC", "ARE", "AP", "SA", "EF", "CA", "PA", "MRSA", "VRE", "MD", "MS", "MT", "LO");
 
     echo "<tr>";
-      // loop through each of the assays and print the result
+      echo "<td>{$fraction['labid']}</td>";
+      echo "<td>{$fraction['weight']}</td>";
+
+    // loop through each of the assays and print the result
       foreach ($form_assays as $i) {
         print_fraction_result($fraction, $i);
       }
@@ -43,9 +49,8 @@
   }
 
   function print_fraction_result($fraction, $assay){
-    echo "FRIEND?";
-    if(array_key_exists($assay, $fraction)){
-      $css_class = ($fraction[$assay]["result"]) ? "assay-".$fraction[$assay]["result"]:"assay-none";
+    if(array_key_exists($assay, $fraction["fraction"])){
+      $css_class = ($fraction["fraction"][$assay]["result"]) ? "assay-".$fraction["fraction"][$assay]["result"]:"assay-none";
       echo "<td class='$css_class'></td>";
     }else{
       echo "<td class='assay-none'></td>";
@@ -59,7 +64,7 @@
 
 ?>
 <div>
-  <table>
+  <table class="assay-table">
     <thead>
       <tr>
         <th>ID</th>
@@ -84,7 +89,7 @@
     </thead>
 
     <?php
-    print_fraction_row($variables['assay']['fraction']);
+    print_fraction_row($variables['assay']);
 
       // loop through fractions and call this
 
