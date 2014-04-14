@@ -68,6 +68,8 @@ class IslandoraAssayIngestTestCase extends IslandoraWebTestCase {
 
     $path = drupal_get_path('module', 'islandora_lab_object_assay');
 
+    $path = $path . "/"; //Add a slash because fixtures/$file will be coming after this.
+
     //Create a assay properties array for the construction and ingestion of an assay object.
     $assay_properties = array();   //init the array
     $assay_properties['label'] = 'assay_test';   //Give it a label
@@ -84,26 +86,26 @@ class IslandoraAssayIngestTestCase extends IslandoraWebTestCase {
     
     $assay_datastream_dc = array(); //Init the Dublin Core datastream
     $assay_datastream_dc['dsid'] = 'DC';  //dsid comes from the ds composite model in the xml directory
-    $assay_datastream_dc['path'] = $path . '/fixtures/example_assay_dc.xml'; //Path to the file containing the datastream
+    $assay_datastream_dc['path'] = $path . 'fixtures/example_assay_dc.xml'; //Path to the file containing the datastream
     $assay_datastream_dc['control_group'] = 'M'; //M - managed by Fedora, X - in line XML
     $assay_datastream_dc['mimetype'] = 'text/xml';
 
-    $assay_datastream_mads = array(); //Init the FRACTION datastream
-    $assay_datastream_mads['dsid'] = 'FRACTION'; //dsid comes from the ds composite model in the xml directory
-    $assay_datastream_mads['path'] = $path . '/fixtures/example_assay_fraction.xml'; //Path to the file containing the datastream
-    $assay_datastream_mads['control_group'] = 'M'; //M - managed by Fedora, X - in line XML
-    $assay_datastream_mads['mimetype'] = 'text/xml';
+    $assay_datastream_fraction = array(); //Init the FRACTION datastream
+    $assay_datastream_fraction['dsid'] = 'FRACTION'; //dsid comes from the ds composite model in the xml directory
+    $assay_datastream_fraction['path'] = $path . 'fixtures/example_assay_fraction.xml'; //Path to the file containing the datastream
+    $assay_datastream_fraction['control_group'] = 'M'; //M - managed by Fedora, X - in line XML
+    $assay_datastream_fraction['mimetype'] = 'text/xml';
 
     $assay_datastream_relsext = array(); //Init the RELS-EXT datastream
     $assay_datastream_relsext['dsid'] = 'RELS-EXT'; //dsid comes from the ds composite model in the xml directory
-    $assay_datastream_relsext['path'] = $path . '/fixtures/example_assay_relsext.rdf'; //Path to the file containing the datastream
+    $assay_datastream_relsext['path'] = $path . 'fixtures/example_assay_relsext.rdf'; //Path to the file containing the datastream
     $assay_datastream_relsext['control_group'] = 'M'; //M - managed by Fedora, X - in line XML
     $assay_datastream_relsext['mimetype'] = 'text/xml';
 
     //Add all of the datastreams to the datastreams array
 
     $assay_datastreams[] = $assay_datastream_dc;
-    $assay_datastreams[] = $assay_datastream_mads;
+    $assay_datastreams[] = $assay_datastream_fraction;
     $assay_datastreams[] = $assay_datastream_relsext;
 
     //Ingest the object with its properties array and datastreams array.
@@ -111,10 +113,8 @@ class IslandoraAssayIngestTestCase extends IslandoraWebTestCase {
     try {
       $assay_test_object = $this->ingestConstructedObject($assay_properties, $assay_datastreams);
     }
-    catch(RepositoryException $re) {
-
-      echo 'Caught Exception: ', $re->getMessage(), "\n";
-
+    catch (RepositoryException $re) {
+      echo 'Caught exception: ', $re->getMessage(), "\n";
     }
   }
 
