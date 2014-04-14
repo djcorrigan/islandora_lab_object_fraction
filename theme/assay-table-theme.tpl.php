@@ -1,10 +1,7 @@
 <style>
-  .assay-table{
-    width: 100%;
-    border : none;
-    margin-left: auto;
-    margin-right: auto;
-    display: table;
+
+  .assay-table td{
+    width: 10px;
   }
   .assay-hit{
     background-color: red;
