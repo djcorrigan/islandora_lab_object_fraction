@@ -62,7 +62,6 @@ function islandora_object_has_fraction($object){
 }
 
 function islandora_lab_object_assay_forms($form_id, $args){
-  echo "here";
   /**
    * @author Nolan Phillips ncphillips@upei.ca
    *
@@ -89,7 +88,6 @@ function islandora_lab_object_assay_forms($form_id, $args){
      *      $relationships = array(FEDORA_RELS_EXT_URI => array('isPartOf'),);
      */
     case 'related_assay_form':
-      echo "HERE?"; die;
       $cmodels = array('islandora:assay_cmodel');
       $relationships = array(FEDORA_RELS_EXT_URI => array('isPartOf', 'isMemberOf',),);
 
