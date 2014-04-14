@@ -28,6 +28,28 @@
 ?>
 <div>
   <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Weight</th>
+        <th>P1B</th>
+        <th>HC</th>
+        <th>HE</th>
+        <th>PC</th>
+        <th>ARE</th>
+        <th>AP</th>
+        <th>SA</th>
+        <th>EF</th>
+        <th>CA</th>
+        <th>PA</th>
+        <th>MRSA</th>
+        <th>VRE</th>
+        <th>MD</th>
+        <th>MS</th>
+        <th>MT</th>
+        <th>LO</th>
+      </tr>
+    </thead>
 
   </table>
 </div>
