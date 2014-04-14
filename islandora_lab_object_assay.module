@@ -22,7 +22,16 @@ function islandora_lab_object_assay_menu(){
         'page callback' => 'islandora_bioinformatics_assay_lab_object_assay_ingest',
         'page arguments' => array(2),
         'access callback' => TRUE,
-      )
+    ),
+    //displays the fraction assay
+    'islandora/object/%islandora_object/assay' => array(
+      'title' => 'Assay',
+      'type' => MENU_LOCAL_TASK,
+      'description' => 'Assay related to this specimen',
+      'page callback' => 'drupal_get_form',
+      'page arguments' => array('assay_form', 2),
+      'access callback' => TRUE,
+    ),
   );
 }
 
@@ -68,7 +77,10 @@ function islandora_lab_object_assay_forms($form_id, $args){
   return $forms;
 }
 
-
+function islandora_lab_object_assay_assay_form(array $form, array &$form_state, AbstractObject $object){
+  var_dump($object);
+  exit();
+}
 
 
 function islandora_lab_object_assay_access($object) {
