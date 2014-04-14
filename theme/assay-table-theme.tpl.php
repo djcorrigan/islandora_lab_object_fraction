@@ -50,6 +50,10 @@
         <th>LO</th>
       </tr>
     </thead>
-
+    <?php
+      foreach ($variables['assay']["fraction"] as $fraction){
+        echo "<tr> <td>Heeeeyyyyyy</td> </tr>";
+      }
+    ?>
   </table>
 </div>

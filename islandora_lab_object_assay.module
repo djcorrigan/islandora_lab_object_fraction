@@ -308,9 +308,9 @@ function assay_object_to_array($assay_object){
         $assay_array["notes"] = ((string)$part) ? (string)$part:"";
         break;
       case "inhibitor":
-        $assay_array[$i]["name"] = ((string)$part->name) ? (string)$part->name:"";
-        $assay_array[$i]["result"] = ((string)$part->result) ? (string)$part->result:"";
-        $assay_array[$i]["comment"] = ((string)$part->comment) ? (string)$part->comment:"";
+        $assay_array["fraction"][$i]["name"] = ((string)$part->name) ? (string)$part->name:"";
+        $assay_array["fraction"][$i]["result"] = ((string)$part->result) ? (string)$part->result:"";
+        $assay_array["fraction"][$i]["comment"] = ((string)$part->comment) ? (string)$part->comment:"";
         $i++;
         break;
     }
