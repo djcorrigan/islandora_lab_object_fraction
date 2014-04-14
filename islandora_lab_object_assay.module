@@ -223,7 +223,7 @@ function islandora_lab_object_assay_theme($existing, $type, $theme, $path) {
  */
 function islandora_lab_object_assay_islandora_assay_cmodel_islandora_view_object($object, $page_number, $page_size) {
   $output = theme('islandora_lab_object_assay', array('islandora_object' => $object));
-  return array('' => $output);
+  return array('islandora_lab_object_assay_table' => $output);
 }
 
 /**
