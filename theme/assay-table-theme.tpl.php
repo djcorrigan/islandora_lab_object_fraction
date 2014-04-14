@@ -1,6 +1,7 @@
 <style>
   .assay-table{
     width:100%;
+    border : none;
   }
   .assay-hit{
     background-color: red;
@@ -28,7 +29,7 @@
 </style>
 
 <?php
-  function print_fraction_row($fraction){
+  function print_fraction_row($fraction) {
 
     // will contain information queried from the database
     $assays = array();
@@ -48,7 +49,7 @@
 
   }
 
-  function print_fraction_result($fraction, $assay){
+  function print_fraction_result($fraction, $assay) {
     if(array_key_exists($assay, $fraction["fraction"])){
       $css_class = ($fraction["fraction"][$assay]["result"]) ? "assay-".$fraction["fraction"][$assay]["result"]:"assay-none";
       echo "<td class='$css_class'></td>";
