@@ -328,7 +328,7 @@ function assay_object_to_array($assay_object){
 function islandora_lab_object_assay_ingest(AbstractObject $parent) {
   $collection = islandora_object_load('islandora:assay_collection');
   if($collection !== FALSE) {
-    if (($configuration = islandora_lab_object_assay_load_ingest_configuration($collection)) !== FALSE) {
+    if (($configuration = islandora_lab_object_assay_load_ingest_configuration($collection, $parent)) !== FALSE) {
       module_load_include('inc', 'islandora', 'includes/ingest.form');
       return drupal_get_form('islandora_ingest_form', $configuration);
     }
@@ -337,7 +337,7 @@ function islandora_lab_object_assay_ingest(AbstractObject $parent) {
 }
 
 
-function islandora_lab_object_assay_load_ingest_configuration(AbstractObject $collection) {
+function islandora_lab_object_assay_load_ingest_configuration(AbstractObject $collection, AbstractObject $parent) {
   $is_collection_object = in_array('islandora:collectionCModel', $collection->models);
   $has_policy = isset($collection['COLLECTION_POLICY']);
   if (!$is_collection_object || !$has_policy) {
@@ -350,6 +350,11 @@ function islandora_lab_object_assay_load_ingest_configuration(AbstractObject $co
   $results = $object->relationships->get(FEDORA_RELS_EXT_URI, 'isMemberOfCollection', $collection->id);
   if (empty($results)) {
     $object->relationships->add(FEDORA_RELS_EXT_URI, 'isMemberOfCollection', $collection->id);
+  }
+
+  $results = $object->relationships->get(FEDORA_RELS_EXT_URI, 'isPartOf', $parent->id);
+  if (empty($results)) {
+    $object->relationships->add(FEDORA_RELS_EXT_URI, 'isPartOf', $parent->id);
   }
 
   $policy = new CollectionPolicy($collection['COLLECTION_POLICY']->content);
