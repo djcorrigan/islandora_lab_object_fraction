@@ -2,6 +2,7 @@
 
   .assay-table td{
     width: 10px;
+    padding: 0px;
   }
   .assay-hit{
     background-color: red;
