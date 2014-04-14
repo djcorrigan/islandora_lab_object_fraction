@@ -24,7 +24,7 @@
   }
 </style>
 <?php
-  print_r ($variables);
+  print_r ($variables['assay']);
 ?>
 <div>
   <table>
