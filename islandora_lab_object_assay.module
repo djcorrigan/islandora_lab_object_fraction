@@ -9,6 +9,8 @@
  * @author Quintin Dawson qdawson@upei.ca
  */
 
+$thing = islandora_get_object("islandora:690");
+assay_object_to_array($thing);
 function islandora_lab_object_assay_menu(){
   return array(
     'assay/assays' => array(
