@@ -19,10 +19,8 @@
   }
 
   function print_fraction_result($fraction, $assay){
-    echo "<pre> ????";
-    var_dump($fraction);
-    echo "</pre>????";
-    if(array_key_exists($fraction, $assay)){
+
+    if(array_key_exists($assay, $fraction)){
       echo "HEYYYYYY" . $fraction[$assay]["name"];
     }else{
       echo "NOOOOO";
