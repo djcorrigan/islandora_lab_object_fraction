@@ -274,7 +274,7 @@ function assay_object_to_array($assay_object){
   $assay_array = array();
 
   $assay_xml = new SimpleXMLElement($assay_object["fraction"]->content);
-
+  echo $assay_object["fraction"]->content;
 
   foreach($assay_xml->children($ns) as $part){
 
