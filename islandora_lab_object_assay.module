@@ -28,8 +28,31 @@ function islandora_lab_object_assay_menu(){
   );
 }
 
+
+/**
+ * @param $object
+ * @return bool
+ * @todo assay_cmodel to fraction_cmodel on refactor
+ */
 function islandora_object_has_fraction($object){
-  return true;
+  $cmodel_id = $object->models[0];
+  $query = "
+    PREFIX fedora-model: <info:fedora/fedora-system:def/model#>
+    SELECT ?datarel
+    FROM <#ri>
+    WHERE
+    {
+      {<info:fedora/islandora:assay_cmodel> ?datarel <info:fedora/$cmodel_id>} .
+    }
+  ";
+
+  $tuque = new IslandoraTuque();
+  $result = $tuque->repository->ri->sparqlQuery($query, 'unlimited');
+
+  if (sizeof($result) > 0)
+    return TRUE;
+  else
+    return FALSE;
 }
 
 function islandora_lab_object_assay_forms($form_id, $args){
