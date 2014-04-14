@@ -79,8 +79,8 @@ function islandora_lab_object_assay_forms($form_id, $args){
 
 function assay_form(array $form, array &$form_state, AbstractObject $object){
 
-  $assay_array = assay_object_to_array($object);
-
+  $thing = theme('islandora_lab_object_assay_table', $object);
+  return array('' => $thing);
 
   //exit();
   //$thing = "HEY";
