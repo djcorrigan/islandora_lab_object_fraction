@@ -21,9 +21,10 @@
   function print_fraction_result($fraction, $assay){
 
     if(array_key_exists($assay, $fraction)){
-      echo "HEYYYYYY" . $fraction[$assay]["name"];
+      $css_class = ($fraction[$assay]["result"]) ? "array-".$fraction[$assay]["result"]:"array-none";
+      echo "<td class='$css_class'> </td>";
     }else{
-      echo "NOOOOO";
+      echo "<td class='array-none'> </td>";
     }
 
   }
