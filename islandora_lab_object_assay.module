@@ -77,7 +77,7 @@ function islandora_lab_object_assay_forms($form_id, $args){
   return $forms;
 }
 
-function islandora_lab_object_assay_assay_form(array $form, array &$form_state, AbstractObject $object){
+function assay_form(array $form, array &$form_state, AbstractObject $object){
   var_dump($object);
   exit();
 }
