@@ -28,6 +28,10 @@ function islandora_lab_object_assay_menu(){
   );
 }
 
+function islandora_object_has_fraction($object){
+  return true;
+}
+
 function islandora_lab_object_assay_forms($form_id, $args){
   /**
    * @author Nolan Phillips ncphillips@upei.ca
