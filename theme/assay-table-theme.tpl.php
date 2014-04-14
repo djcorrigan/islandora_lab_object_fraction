@@ -45,10 +45,10 @@
   function print_fraction_result($fraction, $assay){
     echo "FRIEND?";
     if(array_key_exists($assay, $fraction)){
-      $css_class = ($fraction[$assay]["result"]) ? "array-".$fraction[$assay]["result"]:"array-none";
+      $css_class = ($fraction[$assay]["result"]) ? "assay-".$fraction[$assay]["result"]:"assay-none";
       echo "<td class='$css_class'>A</td>";
     }else{
-      echo "<td class='array-none'>A</td>";
+      echo "<td class='assay-none'>A</td>";
     }
 
   }
