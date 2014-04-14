@@ -71,10 +71,6 @@ function assay_form(array $form, array &$form_state, AbstractObject $object){
 }
 
 
-function islandora_lab_object_assay_access($object) {
-  return TRUE;
-}
-
 /**
  * Implements hook_islandora_required_objects()
  * 
