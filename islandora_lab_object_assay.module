@@ -17,6 +17,14 @@ function islandora_lab_object_assay_menu(){
       'access arguments' => TRUE,
       'type' => MENU_CALLBACK,
     ),
+    'islandora/object/%islandora_object/people' => array(
+      'title' => 'Fractions',
+      'type' => MENU_LOCAL_TASK,
+      'description' => "Fractions associated with this object",
+      'page arguments' => array('related_fraction_form', 2),
+      'access callback' => 'islandora_object_has_fraction',
+      'access arguments' => array(2),
+    )
   );
 }
 
