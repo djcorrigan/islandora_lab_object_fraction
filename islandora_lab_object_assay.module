@@ -277,8 +277,8 @@ function assay_object_to_array($assay_object){
 
   foreach($assay_xml->children($ns) as $part){
 
-    echo $part->getName();
-    echo "<br>";
+   // echo $part->getName();
+   // echo "<br>";
   }
 
   //die;
