@@ -1,3 +1,17 @@
+<?php
+  function print_fraction_row($fraction){
+
+    // query the inhibitors, or whatever they're called.
+    $result = db_select('labobject_assay_assay', 'a')
+        ->fields('a', array('abbreviation', 'name'))
+        ->execute();
+
+    var_dump($result);
+    echo "<tr>";
+    echo "</tr>";
+  }
+?>
+
 <style>
   .assay-hit{
     background-color: red;
@@ -50,10 +64,14 @@
         <th>LO</th>
       </tr>
     </thead>
+
     <?php
-      foreach ($variables['assay']["fraction"] as $fraction){
-        echo "<tr> <td>Heeeeyyyyyy</td> </tr>";
-      }
+      // really this theme should be taking in a list of fractions instead of just one
+
+      // loop through fractions and call this
+        print_fraction_row($variables['assay']['fraction']);
+
+      // end loop through fractions
     ?>
   </table>
 </div>
