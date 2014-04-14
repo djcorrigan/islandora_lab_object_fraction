@@ -211,7 +211,7 @@ function islandora_lab_object_assay_theme($existing, $type, $theme, $path) {
     ),
     'islandora_lab_object_assay_table' => array(
       'file' => 'theme/theme.inc',
-      'template' => 'theme/block-assay-table-theme',
+      'template' => 'theme/assay-table-theme',
       'pattern' => 'islandora_lab_object_assay_table__',
       'variables' => array(
           'islandora_object' => NULL
