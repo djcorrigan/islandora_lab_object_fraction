@@ -1,13 +1,18 @@
 <?php
   function print_fraction_row($fraction){
-
+    $inhibs = array();
     // query the inhibitors, or whatever they're called.
     $result = db_select('labobject_assay_assay', 'a')
         ->fields('a', array('abbreviation', 'name'))
         ->execute();
 
-    echo "HELLLLO";
     var_dump($result);
+
+    foreach($result as $row){
+      $inhibs[$row->name] = $row->abbreviation;
+    }
+
+    print_r($inhibs);
     echo "<tr>";
     echo "</tr>";
   }
