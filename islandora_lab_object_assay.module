@@ -62,6 +62,7 @@ function islandora_object_has_fraction($object){
 }
 
 function islandora_lab_object_assay_forms($form_id, $args){
+  echo "HERE?"; die;
   /**
    * @author Nolan Phillips ncphillips@upei.ca
    *
