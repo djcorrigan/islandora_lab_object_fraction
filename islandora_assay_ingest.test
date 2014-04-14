@@ -84,19 +84,19 @@ class IslandoraAssayIngestTestCase extends IslandoraWebTestCase {
     
     $assay_datastream_dc = array(); //Init the Dublin Core datastream
     $assay_datastream_dc['dsid'] = 'DC';  //dsid comes from the ds composite model in the xml directory
-    $assay_datastream_dc['path'] = $path . 'fixtures/example_assay_dc.xml'; //Path to the file containing the datastream
+    $assay_datastream_dc['path'] = $path . '/fixtures/example_assay_dc.xml'; //Path to the file containing the datastream
     $assay_datastream_dc['control_group'] = 'M'; //M - managed by Fedora, X - in line XML
     $assay_datastream_dc['mimetype'] = 'text/xml';
 
     $assay_datastream_mads = array(); //Init the FRACTION datastream
     $assay_datastream_mads['dsid'] = 'FRACTION'; //dsid comes from the ds composite model in the xml directory
-    $assay_datastream_mads['path'] = $path . 'fixtures/example_assay_fraction.xml'; //Path to the file containing the datastream
+    $assay_datastream_mads['path'] = $path . '/fixtures/example_assay_fraction.xml'; //Path to the file containing the datastream
     $assay_datastream_mads['control_group'] = 'M'; //M - managed by Fedora, X - in line XML
     $assay_datastream_mads['mimetype'] = 'text/xml';
 
     $assay_datastream_relsext = array(); //Init the RELS-EXT datastream
     $assay_datastream_relsext['dsid'] = 'RELS-EXT'; //dsid comes from the ds composite model in the xml directory
-    $assay_datastream_relsext['path'] = $path . 'fixtures/example_assay_relsext.rdf'; //Path to the file containing the datastream
+    $assay_datastream_relsext['path'] = $path . '/fixtures/example_assay_relsext.rdf'; //Path to the file containing the datastream
     $assay_datastream_relsext['control_group'] = 'M'; //M - managed by Fedora, X - in line XML
     $assay_datastream_relsext['mimetype'] = 'text/xml';
 
