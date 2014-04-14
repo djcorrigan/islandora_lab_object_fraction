@@ -1,20 +1,30 @@
 <?php
   function print_fraction_row($fraction){
-    $inhibs = array();
-    // query the inhibitors, or whatever they're called.
-    $result = db_select('labobject_assay_assay', 'a')
-        ->fields('a', array('abbreviation', 'name'))
-        ->execute();
 
-    var_dump($result);
+    // will contain information queried from the database
+    $assays = array();
 
-    foreach($result as $row){
-      $inhibs[$row->name] = $row->abbreviation;
+    // using this to keep things in order.
+    $form_assays = array("P1B", "HC", "HE", "PC", "ARE", "AP", "SA", "EF", "CA", "PA", "MRSA", "VRE", "MD", "MS", "MT", "LO");
+
+    echo "<tr>";
+      // loop through each of the assays and print the result
+      foreach ($form_assays as $i) {
+        print_fraction_result($fraction, $i);
+
+
+      }
+    echo "</tr>";
+
+  }
+
+  function print_fraction_result($fraction, $assay){
+    if(array_key_exists($fraction, $assay)){
+      echo "HEYYYYYY" . $fraction[$assay]["name"];
+    }else{
+      echo "NOOOOO";
     }
 
-    print_r($inhibs);
-    echo "<tr>";
-    echo "</tr>";
   }
 ?>
 
