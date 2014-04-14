@@ -1,4 +1,7 @@
 <style>
+  .assay-table{
+    width:100%;
+  }
   .assay-hit{
     background-color: red;
   }
@@ -61,7 +64,7 @@
 
 ?>
 <div>
-  <table>
+  <table class="assay-table">
     <thead>
       <tr>
         <th>ID</th>
