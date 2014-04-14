@@ -199,7 +199,7 @@ function islandora_lab_object_assay_islandora_xml_form_builder_form_associations
  * @return array
  */
 function islandora_lab_object_assay_theme($existing, $type, $theme, $path) {
-  echo "HILO";
+  echo "HILO"; die;
   return array(
     'islandora_lab_object_assay' => array(
       'file' => 'theme/theme.inc',
