@@ -31,3 +31,7 @@ function islandora_bioinformatics_fraction_preprocess_islandora_bioinformatics_f
 
 	$variables['test_var'] = $xml_objects;
 }
+
+function islandora_lab_object_assay_preprocess_islandora_lab_object_assay_table(array &$variables){
+  $variables['assay'] = assay_object_to_array($variables['islandora_object']);
+}
