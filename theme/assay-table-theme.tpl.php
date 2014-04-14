@@ -1,7 +1,10 @@
 <style>
 
   .assay-table td{
-    width: 10px;
+    padding: 0px;
+  }
+  .assay-table th{
+    font-weight: normal;
     padding: 0px;
   }
   .assay-hit{
