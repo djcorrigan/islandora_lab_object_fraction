@@ -34,7 +34,7 @@
     $form_assays = array("P1B", "HC", "HE", "PC", "ARE", "AP", "SA", "EF", "CA", "PA", "MRSA", "VRE", "MD", "MS", "MT", "LO");
 
     echo "<tr>";
-      echo "<td>{$fraction['name']}</td>";
+      echo "<td>{$fraction['labid']}</td>";
       echo "<td>{$fraction['weight']}</td>";
 
     // loop through each of the assays and print the result
@@ -46,7 +46,7 @@
   }
 
   function print_fraction_result($fraction, $assay){
-    if(array_key_exists($assay, $fraction)){
+    if(array_key_exists($assay, $fraction["fraction"])){
       $css_class = ($fraction["fraction"][$assay]["result"]) ? "assay-".$fraction["fraction"][$assay]["result"]:"assay-none";
       echo "<td class='$css_class'></td>";
     }else{
