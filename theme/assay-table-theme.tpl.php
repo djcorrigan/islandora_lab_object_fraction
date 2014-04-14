@@ -11,15 +11,13 @@
       // loop through each of the assays and print the result
       foreach ($form_assays as $i) {
         print_fraction_result($fraction, $i);
-
-
       }
     echo "</tr>";
 
   }
 
   function print_fraction_result($fraction, $assay){
-
+    echo "FRIEND?";
     if(array_key_exists($assay, $fraction)){
       $css_class = ($fraction[$assay]["result"]) ? "array-".$fraction[$assay]["result"]:"array-none";
       echo "<td class='$css_class'> </td>";
