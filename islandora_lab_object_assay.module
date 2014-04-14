@@ -9,7 +9,7 @@
  * @author Quintin Dawson qdawson@upei.ca
  */
 
-$thing = islandora_get_object("islandora:690");
+$thing = islandora_object_load("islandora:690");
 assay_object_to_array($thing);
 function islandora_lab_object_assay_menu(){
   return array(
