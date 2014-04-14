@@ -78,8 +78,10 @@ function islandora_lab_object_assay_forms($form_id, $args){
 }
 
 function assay_form(array $form, array &$form_state, AbstractObject $object){
+
   $assay_array = assay_object_to_array($object);
-  var_dump($assay_array);
+
+
   //exit();
   //$thing = "HEY";
 }
@@ -202,6 +204,12 @@ function islandora_lab_object_assay_theme($existing, $type, $theme, $path) {
       'file' => 'theme/theme.inc',
       'template' => 'theme/assay-theme',
       'pattern' => 'islandora_lab_object_assay__',
+      'variables' => array('islandora_object' => NULL),
+    ),
+    'islandora_lab_object_assay_table' => array(
+      'file' => 'theme/theme.inc',
+      'template' => 'theme/assay-table-theme',
+      'pattern' => 'islandora_lab_object_assay_table__',
       'variables' => array('islandora_object' => NULL),
     ),
   );
