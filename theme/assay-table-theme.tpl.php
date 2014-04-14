@@ -46,9 +46,9 @@
     echo "FRIEND?";
     if(array_key_exists($assay, $fraction)){
       $css_class = ($fraction[$assay]["result"]) ? "assay-".$fraction[$assay]["result"]:"assay-none";
-      echo "<td class='$css_class'>A</td>";
+      echo "<td class='$css_class'></td>";
     }else{
-      echo "<td class='assay-none'>A</td>";
+      echo "<td class='assay-none'></td>";
     }
 
   }
