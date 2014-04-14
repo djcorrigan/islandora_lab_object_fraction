@@ -1,5 +1,6 @@
 <style>
   .assay-table{
+    position: relative;
     width:100%;
     border : none;
   }
