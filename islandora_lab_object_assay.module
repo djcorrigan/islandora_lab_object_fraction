@@ -306,8 +306,7 @@ function assay_object_to_array($assay_object){
     }
   }
 
-  var_dump($assay_array);
-  die;
+  return $assay_array;
 }
 
 
