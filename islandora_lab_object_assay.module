@@ -281,7 +281,7 @@ function assay_object_to_array($assay_object){
     echo "<br>";
   }
 
-  die;
+  //die;
 }
 
 
