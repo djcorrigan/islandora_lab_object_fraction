@@ -5,6 +5,7 @@
     width: 100%;
     border : none;
     float: left;
+    table-layout: fixed;
   }
   .assay-hit{
     background-color: red;
