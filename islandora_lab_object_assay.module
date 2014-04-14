@@ -275,10 +275,35 @@ function assay_object_to_array($assay_object){
 
   $assay_xml = new SimpleXMLElement($assay_object["fraction"]->content);
 
+  $i = 0;
   foreach($assay_xml->children($ns) as $part){
 
-   // echo $part->getName();
-   // echo "<br>";
+    switch ((string) $part->getName()){
+      case "type":
+        $assay_array["type"] = ((string)$part) ? (string)$part:"";
+        break;
+      case "labid":
+        $assay_array["labid"] = ((string)$part) ? (string)$part:"";
+        break;
+      case "weight":
+        $assay_array["weight"] = ((string)$part) ? (string)$part:"";
+        break;
+      case "plate":
+        $assay_array["plate"] = ((string)$part) ? (string)$part:"";
+        break;
+      case "location":
+        $assay_array["location"] = ((string)$part) ? (string)$part:"";
+        break;
+      case "notes":
+        $assay_array["notes"] = ((string)$part) ? (string)$part:"";
+        break;
+      case "inhibitor":
+        $assay_array[$i]["name"] = ((string)$part->name) ? (string)$part->name:"";
+        $assay_array[$i]["result"] = ((string)$part->result) ? (string)$part->result:"";
+        $assay_array[$i]["comment"] = ((string)$part->comment) ? (string)$part->comment:"";
+        $i++;
+        break;
+    }
   }
 
   //die;
