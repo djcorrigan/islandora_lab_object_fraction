@@ -270,7 +270,7 @@ function _assay_autocomplete($string){
  */
 function assay_object_to_array($assay_object){
 
-  $ns = "http://www.upeikerrlabs.ca";
+  $ns = "http://www.upeikerrlab.ca";
   $assay_array = array();
 
   $assay_xml = new SimpleXMLElement($assay_object["fraction"]->content);
