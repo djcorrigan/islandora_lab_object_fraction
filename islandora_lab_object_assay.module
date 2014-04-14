@@ -19,7 +19,7 @@ function islandora_lab_object_assay_menu(){
     ),
     'islandora/object/%islandora_object/test_ingest_assay' => array(
         'title' => 'Ingest Assay',
-        'page callback' => 'islandora_bioinformatics_assay_lab_object_assay_ingest',
+        'page callback' => 'islandora_lab_object_assay_ingest',
         'page arguments' => array(2),
         'access callback' => TRUE,
     ),
@@ -314,10 +314,10 @@ function assay_object_to_array($assay_object){
  * This function should create a new assay object and create a relationship between it and the $parent object
  */
 
-function islandora_bioinformatics_assay_lab_object_assay_ingest(AbstractObject $parent) {
+function islandora_lab_object_assay_ingest(AbstractObject $parent) {
   $collection = islandora_object_load('islandora:assay_collection');
   if($collection !== FALSE) {
-    if (($configuration = islandora_bioinformatics_assay_lab_object_load_ingest_configuration($collection)) !== FALSE) {
+    if (($configuration = islandora_lab_object_assay_load_ingest_configuration($collection)) !== FALSE) {
       module_load_include('inc', 'islandora', 'includes/ingest.form');
       return drupal_get_form('islandora_ingest_form', $configuration);
     }
@@ -326,7 +326,7 @@ function islandora_bioinformatics_assay_lab_object_assay_ingest(AbstractObject $
 }
 
 
-function islandora_bioinformatics_assay_lab_object_load_ingest_configuration(AbstractObject $collection) {
+function islandora_lab_object_assay_load_ingest_configuration(AbstractObject $collection) {
   $is_collection_object = in_array('islandora:collectionCModel', $collection->models);
   $has_policy = isset($collection['COLLECTION_POLICY']);
   if (!$is_collection_object || !$has_policy) {
