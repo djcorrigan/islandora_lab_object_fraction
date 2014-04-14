@@ -68,6 +68,8 @@ class IslandoraAssayIngestTestCase extends IslandoraWebTestCase {
 
     $path = drupal_get_path('module', 'islandora_lab_object_assay');
 
+    $path = $path . "/"; //Add a slash because fixtures/$file will be coming after this.
+
     //Create a assay properties array for the construction and ingestion of an assay object.
     $assay_properties = array();   //init the array
     $assay_properties['label'] = 'assay_test';   //Give it a label
@@ -111,10 +113,8 @@ class IslandoraAssayIngestTestCase extends IslandoraWebTestCase {
     try {
       $assay_test_object = $this->ingestConstructedObject($assay_properties, $assay_datastreams);
     }
-    catch(RepositoryException $re) {
-
-      echo 'Caught Exception: ', $re->getMessage(), "\n";
-
+    catch (RepositoryException $re) {
+      echo 'Caught exception: ', $re->getMessage(), "\n";
     }
   }
 
