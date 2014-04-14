@@ -19,7 +19,7 @@ function islandora_lab_object_assay_menu(){
     ),
     'islandora/object/%islandora_object/test_ingest_assay' => array(
         'title' => 'Ingest Assay',
-        'page callback' => 'islandora_bioinformatics_assay_lab_object_assay_ingest',
+        'page callback' => 'islandora_lab_object_assay_ingest',
         'page arguments' => array(2),
         'access callback' => TRUE,
     ),
