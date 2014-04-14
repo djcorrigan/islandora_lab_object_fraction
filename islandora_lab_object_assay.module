@@ -17,21 +17,6 @@ function islandora_lab_object_assay_menu(){
       'access arguments' => TRUE,
       'type' => MENU_CALLBACK,
     ),
-    'islandora/object/%islandora_object/test_ingest_assay' => array(
-        'title' => 'Ingest Assay',
-        'page callback' => 'islandora_lab_object_assay_ingest',
-        'page arguments' => array(2),
-        'access callback' => TRUE,
-    ),
-    //displays the fraction assay
-    'islandora/object/%islandora_object/assay' => array(
-      'title' => 'Assay',
-      'type' => MENU_LOCAL_TASK,
-      'description' => 'Assay related to this specimen',
-      'page callback' => 'drupal_get_form',
-      'page arguments' => array('assay_form', 2),
-      'access callback' => TRUE,
-    ),
   );
 }
 
