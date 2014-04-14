@@ -6,6 +6,7 @@
         ->fields('a', array('abbreviation', 'name'))
         ->execute();
 
+    echo "HELLLLO";
     var_dump($result);
     echo "<tr>";
     echo "</tr>";
