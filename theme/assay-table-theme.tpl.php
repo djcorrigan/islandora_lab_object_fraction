@@ -1,9 +1,10 @@
 <style>
   .assay-table{
     position: relative;
-    display:block;
+    display: block;
     width: 100%;
     border : none;
+    float: left;
   }
   .assay-hit{
     background-color: red;
