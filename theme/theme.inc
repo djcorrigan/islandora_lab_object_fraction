@@ -33,5 +33,4 @@ function islandora_bioinformatics_fraction_preprocess_islandora_bioinformatics_f
 }
 
 function islandora_lab_object_assay_preprocess_islandora_lab_object_assay_table(array &$variables){
-  echo "HEY"; die;
 }
