@@ -2,6 +2,8 @@
   .assay-table{
     width: 100%;
     border : none;
+    margin-left: auto;
+    margin-right: auto;
   }
   .assay-hit{
     background-color: red;
