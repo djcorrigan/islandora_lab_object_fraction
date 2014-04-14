@@ -1,7 +1,8 @@
 <style>
   .assay-table{
     position: relative;
-    width:100%;
+    display:block;
+    width: 100%;
     border : none;
   }
   .assay-hit{
