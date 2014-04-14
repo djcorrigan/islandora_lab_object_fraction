@@ -4,6 +4,7 @@
     border : none;
     margin-left: auto;
     margin-right: auto;
+    display: table;
   }
   .assay-hit{
     background-color: red;
