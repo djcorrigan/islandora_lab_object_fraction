@@ -81,8 +81,8 @@ function assay_form(array $form, array &$form_state, AbstractObject $object){
   //var_dump($object);
   //exit();
 
-  $thing = "HEY";
-  return $thing;
+  //$thing = "HEY";
+  //return $thing;
 }
 
 
