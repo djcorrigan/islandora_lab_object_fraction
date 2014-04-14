@@ -39,6 +39,8 @@
 </style>
 <?php
   print_r ($variables['assay']);
+print_fraction_row($variables['assay']['fraction']);
+
 ?>
 <div>
   <table>
@@ -69,7 +71,6 @@
       // really this theme should be taking in a list of fractions instead of just one
 
       // loop through fractions and call this
-        print_fraction_row($variables['assay']['fraction']);
 
       // end loop through fractions
     ?>
