@@ -6,7 +6,7 @@
     font-size: 12px;
   }
   .assay-table th{
-    font-weight: normal;
+    font-weight: bold;
     width: 10px;
     font-size: 12px;
 
