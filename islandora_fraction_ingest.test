@@ -3,7 +3,7 @@
 /**
 * @file islandora_fraction_ingest.test
 *
-* First, attempts to ingest an fraction object.
+* First, attempts to ingest a fraction object.
 *
 * Then the test will purge the object.
 *
@@ -24,7 +24,7 @@ class IslandoraFractionIngestTestCase extends IslandoraWebTestCase {
   public static function getInfo() {
     return array(
       'name' => 'Fraction Ingest/Purge Test',
-      'description' => 'Ingests and deletes an fraction',
+      'description' => 'Ingests and deletes a fraction',
       'group' => 'Islandora Fraction',
     );
   }
@@ -49,7 +49,7 @@ class IslandoraFractionIngestTestCase extends IslandoraWebTestCase {
   *
   * @author Dalton Mackenzie <demackenzie@upei.ca>
   *
-  * Creates an administrative user and attempts to ingest an fraction.
+  * Creates an administrative user and attempts to ingest a fraction.
   */
 
   public function testIngestFraction() {
@@ -70,7 +70,7 @@ class IslandoraFractionIngestTestCase extends IslandoraWebTestCase {
 
     $path = $path . "/"; //Add a slash because fixtures/$file will be coming after this.
 
-    //Create a fraction properties array for the construction and ingestion of an fraction object.
+    //Create a fraction properties array for the construction and ingestion of a fraction object.
     $fraction_properties = array();   //init the array
     $fraction_properties['label'] = 'fraction_test';   //Give it a label
     $fraction_properties['pid'] = 'islandora:test_fraction';  //PID
