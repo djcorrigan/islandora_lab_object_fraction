@@ -41,7 +41,6 @@
   function print_fraction_row($fraction) {
 
     // will contain information queried from the database
-    $assays = array();
 
     // using this to keep things in order.
     $form_assays = array("P1B", "HC", "HE", "PC", "ARE", "AP", "SA", "EF", "CA", "PA", "MRSA", "VRE", "MD", "MS", "MT", "LO");
@@ -59,6 +58,7 @@
   }
 
   function print_fraction_result($fraction, $assay) {
+    var_dump($fraction);
     if(array_key_exists($assay, $fraction["fraction"])){
       $css_class = ($fraction["fraction"][$assay]["result"]) ? "assay-".$fraction["fraction"][$assay]["result"]:"assay-none";
       echo "<td class='$css_class'></td>";
