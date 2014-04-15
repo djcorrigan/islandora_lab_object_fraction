@@ -19,12 +19,13 @@
 function print_fraction_row($fraction) {
 
 
+  $fraction_url = "/islandora/object/{$fraction->id}";
   // this contains the assay abbreviations in the order we'd like
   // them to appear on the form.
   $form_assays = array("P1B", "HC", "HE", "PC", "ARE", "AP", "SA", "EF", "CA", "PA", "MRSA", "VRE", "MD", "MS", "MT", "LO");
 
   echo "<tr>";
-  echo "<td>{$fraction['labid']}</td>";
+  echo "<td><a href='$fraction_url'>{$fraction['labid']}</a></td>";
   echo "<td>{$fraction['weight']}</td>";
 
   // loop through each of the assays and print the result
