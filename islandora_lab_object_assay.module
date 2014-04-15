@@ -96,10 +96,9 @@ function islandora_lab_object_assay_forms($form_id, $args){
   return $forms;
 }
 
-function assay_form(array $form, array &$form_state, AbstractObject $object){
-
+function islandora_lab_object_assay_form_related_assay_form_alter(&$form, &$form_state){
+  echo "HEY"; die;
 }
-
 
 /**
  * Implements hook_islandora_required_objects()
