@@ -97,6 +97,8 @@ function islandora_lab_object_assay_forms($form_id, $args){
 }
 
 function islandora_lab_object_assay_form_related_assay_form_alter(&$form, &$form_state){
+
+
   $assays = $form_state['related_objects'];
   echo "<pre>";
   var_dump($assays);

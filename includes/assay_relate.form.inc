@@ -56,6 +56,6 @@ function islandora_lab_object_assay_specimen_submit(array $form, array &$form_st
   
   
   foreach ($specimen_ids as $id) {
-    $assay_object->relationships->add($id, 'isPartOf', 'islandora:specimen_cmodel');
+    $assay_object->relationships->add(FEDORA_RELS_EXT_URI, 'isPartOf', $id);
   }
 }
