@@ -4,6 +4,8 @@
  *  Creating the fraction assay table via a template because that seemed the easiest.
  *  This template has a couple of functions to help me do that, although perhaps
  *  the should be moved to another location
+ *
+ *  Very hard coded, not condusive to adding new assays
  */
 
 /**
@@ -101,19 +103,48 @@ function print_fraction_result($fraction, $assay) {
 </style>
 
 <div>
-  <div>
-    <table class="assay-table">
-      <tr>
-        <td><strong>Color Codes</strong></td>
-        <td class="assay-hit">Hit</td>
-        <td class="assay-strong">Strong</td>
-        <td class="assay-medium">Medium</td>
-        <td class="assay-low">Low</td>
-        <td class="assay-inactive">Inactive (I)</td>
-        <td class="assay-none">None (N)</td>
-      </tr>
-    </table>
-  </div>
+  <table class="assay-table">
+    <tr>
+      <td colspan="4">Abbreviation Key</td>
+    </tr>
+    <tr>
+      <td><strong>AP</strong> - Antiproliferative</td>
+      <td><strong>ARE</strong> - ARE</td>
+      <td><strong>CA</strong> - Candida Albicans</td>
+      <td><strong>EF</strong> - Enterococcus faecalis</td>
+    </tr>
+    <tr>
+      <td><strong>HC</strong> - HCT116</td>
+      <td><strong>HE</strong> - HELA</td>
+      <td><strong>LO</strong> - Lypoxygenase</td>
+      <td><strong>MD</strong> - Mycobacterium diernhoferi</td>
+    </tr>
+    <tr>
+      <td><strong>ME</strong> - Mycobacterium smegmatis</td>
+      <td><strong>MF</strong> - Mycobacterium terrae</td>
+      <td><strong>MRSA</strong> - MRSA</td>
+      <td><strong>P1B</strong> - PTB1B</td>
+    </tr>
+    <tr>
+      <td><strong>PA</strong> - Pseudomonas aeruginosa</td>
+      <td><strong>PC</strong> - PC3</td>
+      <td><strong>SA</strong> - Staphlococcus aureus</td>
+      <td><strong>VRE</strong> - VRE</td>
+    </tr>
+  </table>
+
+  <table class="assay-table">
+    <tr>
+      <td><strong>Color Codes</strong></td>
+      <td class="assay-hit">Hit</td>
+      <td class="assay-strong">Strong</td>
+      <td class="assay-medium">Medium</td>
+      <td class="assay-low">Low</td>
+      <td class="assay-inactive">Inactive (I)</td>
+      <td class="assay-none">None (N)</td>
+    </tr>
+  </table>
+
   <table class="assay-table">
     <thead>
       <tr>
