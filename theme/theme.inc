@@ -14,6 +14,7 @@ function islandora_bioinformatics_fraction_preprocess_islandora_bioinformatics_f
 
 	$obj = new SimpleXMLElement($islandora_object['fraction']->content);
   echo "<pre>";
+  echo "HELLLLO";
   print_r ($islandora_object['fraction']->content);
   echo "</pre>";
 	$xml_objects = $obj->children($ns);
