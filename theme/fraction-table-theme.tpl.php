@@ -65,6 +65,10 @@ function print_fraction_result($fraction, $assay) {
 ?>
 <style>
 
+  .abbr-header{
+    font-weight: bold;
+    text-decoration: underline;
+  }
   .assay-table td{
     padding: 0px;
     width: 10px;
@@ -105,7 +109,7 @@ function print_fraction_result($fraction, $assay) {
 <div>
   <table class="assay-table">
     <tr>
-      <td colspan="4">Abbreviation Key</td>
+      <td colspan="4" class="abbr-header">Abbreviation Key</td>
     </tr>
     <tr>
       <td><strong>AP</strong> - Antiproliferative</td>
