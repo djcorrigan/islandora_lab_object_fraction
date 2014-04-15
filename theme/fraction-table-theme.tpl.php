@@ -177,9 +177,16 @@ function print_fraction_result($fraction, $assay) {
     <?php
 
     if (!empty($variables['fractions'])){
+      $found = false;
       foreach ($variables['fractions'] as $fraction) {
         if ($fraction['type'] == 'fraction'){
+          $found = true;
           print_fraction_row($fraction);
+        }
+
+        if (!$found) {
+          echo "<tr><td colspan='18'>There are no fractions associated with this specimen.</td></tr>";
+
         }
       }
     }else{
@@ -218,9 +225,15 @@ function print_fraction_result($fraction, $assay) {
     <?php
 
     if (!empty($variables['fractions'])){
+      $found_c = false;
       foreach ($variables['fractions'] as $fraction) {
         if ($fraction['type'] == 'compound'){
+          $found_c = true;
           print_fraction_row($fraction);
+        }
+
+        if (!$found_c){
+          echo "<tr><td colspan='18'>There are no compounds associated with this specimen.</td></tr>";
         }
       }
     }else{
