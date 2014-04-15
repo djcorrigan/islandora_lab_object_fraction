@@ -99,8 +99,9 @@ function islandora_lab_object_fraction_forms($form_id, $args){
 function islandora_lab_object_fraction_form_related_fraction_form_alter(&$form, &$form_state){
 
 
-  //$fractions = $form_state['related_objects'];
+  $fractions = $form_state['related_objects'];
 
+  var_dump($fractions);
   //$form["header"] = theme('islandora_lab_object_fraction_table', array('islandora_object'=>$fractions[0]));
  // return $form;
 
