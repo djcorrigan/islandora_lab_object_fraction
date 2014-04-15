@@ -101,6 +101,19 @@ function print_fraction_result($fraction, $assay) {
 </style>
 
 <div>
+  <div>
+    <table class="assay-table">
+      <tr>
+        <td><strong>Color Codes</strong></td>
+        <td class="assay-hit">Hit</td>
+        <td class="assay-strong">Strong</td>
+        <td class="assay-medium">Medium</td>
+        <td class="assay-low">Low</td>
+        <td class="assay-inactive">Inactive (I)</td>
+        <td class="assay-none">None (N)</td>
+      </tr>
+    </table>
+  </div>
   <table class="assay-table">
     <thead>
       <tr>
