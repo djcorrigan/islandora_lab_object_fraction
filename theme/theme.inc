@@ -13,6 +13,9 @@ function islandora_bioinformatics_fraction_preprocess_islandora_bioinformatics_f
 	$ns = "http://www.upeikerrlab.ca";
 
 	$obj = new SimpleXMLElement($islandora_object['fraction']->content);
+  echo "<pre>";
+  print_r ($islandora_object['fraction']->content);
+  echo "</pre>";
 	$xml_objects = $obj->children($ns);
 
 	$variables['type'] = $xml_objects->type;
