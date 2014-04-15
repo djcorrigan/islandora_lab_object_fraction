@@ -43,7 +43,7 @@ function islandora_lab_object_fraction_preprocess_islandora_lab_object_fraction_
   $i = 0;
   foreach ($variables['islandora_objects'] as $fraction){
     $variables['fractions'][$i]['pid'] = $fraction->id;
-    $variables['fractions'][] = fraction_object_to_array($fraction);
+    $variables['fractions'][$i] = fraction_object_to_array($fraction);
     $i++;
   }
 
