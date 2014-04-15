@@ -47,7 +47,12 @@ function print_fraction_result($fraction, $assay) {
   if (array_key_exists("fraction", $fraction)){
     if (array_key_exists($assay, $fraction["fraction"])){
       $css_class = ($fraction["fraction"][$assay]["result"]) ? "assay-".$fraction["fraction"][$assay]["result"]:"assay-none";
-      echo "<td class='$css_class'></td>";
+      if ($css_class == "assay-inactive"){
+        echo "<td class='$css_class'>I</td>";
+
+      }else
+        echo "<td class='$css_class'></td>";
+      }
     }else{
       echo "<td class='assay-none'>N</td>";
     }
