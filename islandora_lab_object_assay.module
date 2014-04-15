@@ -97,7 +97,7 @@ function islandora_lab_object_assay_forms($form_id, $args){
 }
 
 function islandora_lab_object_assay_form_related_assay_form_alter(&$form, &$form_state){
-  echo "HEY"; die;
+  echo "nice";
 }
 
 /**
