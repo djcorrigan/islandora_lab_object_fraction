@@ -9,7 +9,7 @@
 */
 
 
-function islandora_lab_object_assay_specimen_form(array $form, array &$form_state) {
+function islandora_lab_object_fraction_specimen_form(array $form, array &$form_state) {
   
   // connect to the fedora repo. Apparently this function can be called from anywhere and it will
   // work.
@@ -47,7 +47,7 @@ function islandora_lab_object_assay_specimen_form(array $form, array &$form_stat
 }
 
 
-function islandora_lab_object_assay_specimen_submit(array $form, array &$form_state) {
+function islandora_lab_object_fraction_specimen_submit(array $form, array &$form_state) {
   $tuque = new IslandoraTuque();
 
   $assay_object = $form_state['islandora']['objects'][0];
