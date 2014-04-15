@@ -50,7 +50,6 @@
       echo "<td>{$fraction['weight']}</td>";
 
     echo "<pre>";
-    var_dump($fraction);
     echo "</pre>";
     // loop through each of the assays and print the result
       foreach ($form_assays as $i) {
@@ -71,7 +70,6 @@
       }
     }else{
       echo "<td class='assay-none'>N</td>";
-
     }
 
   }
