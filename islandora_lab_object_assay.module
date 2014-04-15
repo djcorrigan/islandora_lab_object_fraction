@@ -99,8 +99,7 @@ function islandora_lab_object_assay_forms($form_id, $args){
 function islandora_lab_object_assay_form_related_assay_form_alter(&$form, &$form_state){
   $assays = $form_state['related_objects'];
 
-  $form["header"] = theme('islandora_lab_object_assay_table', $assays[0]);
-  var_dump($form["header"]);
+  $form["header"] = theme('islandora_lab_object_assay_table', array('islandora_object'=>$assays[0]));
   return $form;
 
 
