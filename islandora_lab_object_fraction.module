@@ -103,6 +103,7 @@ function islandora_lab_object_fraction_form_related_fraction_form_alter(&$form, 
 
   $form['selected'] = array();
   $form['submit'] = array();
+
   $form['table'] = array(
     "#type" => "hidden",
     "#prefix"=> theme('islandora_lab_object_fraction_table', array('islandora_objects' => $fractions))
@@ -301,7 +302,7 @@ function _assay_autocomplete($string){
  */
 function fraction_object_to_array($fraction_object){
 
-
+  $assays = array();
   // query the assays and store them
   $result = db_select('labobject_assay_assay', 'a')
       ->fields('a', array('abbreviation', 'name'))
