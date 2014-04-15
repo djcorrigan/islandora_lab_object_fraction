@@ -99,11 +99,11 @@
     </thead>
 
     <?php
-    print_fraction_row($variables['assay']);
 
-      // loop through fractions and call this
+    foreach ($variables['fractions'] as $fraction) {
+      print_fraction_row($fraction);
+    }
 
-      // end loop through fractions
     ?>
   </table>
 </div>
