@@ -96,15 +96,27 @@ function islandora_lab_object_fraction_forms($form_id, $args){
   return $forms;
 }
 
+
+/**
+ * This alters the base form to suit fraction data. Unfortunately I found that the fraction
+ * data needed to be displayed too complexly for a form to be useful, so this really strips
+ * out most of the form functionality.
+ *
+ * @param $form
+ * @param $form_state
+ */
 function islandora_lab_object_fraction_form_related_fraction_form_alter(&$form, &$form_state){
 
 
-//  $assays = $form_state['related_objects'];
-//
-//  $form["header"] = th  echo "<pre>";
-//  var_dump($assays);
-//  echo "</pre>";eme('islandora_lab_object_fraction_table', array('islandora_object'=>$assays[0]));
-//  return $form;
+  $fractions = $form_state['related_objects'];
+
+  $form['selected'] = array();
+  $form['submit'] = array();
+
+  $form['table'] = array(
+    "#type" => "hidden",
+    "#prefix"=> theme('islandora_lab_object_fraction_table', array('islandora_objects' => $fractions))
+  );
 
 
 }
@@ -210,6 +222,9 @@ function islandora_lab_object_fraction_islandora_xml_form_builder_form_associati
 
 
 /**
+ * Defines a theme for viewing a fraction as well as a theme for viewing a table
+ * of fractions
+ *
  * @param $existing
  * @param $type
  * @param $theme
@@ -229,7 +244,7 @@ function islandora_lab_object_fraction_theme($existing, $type, $theme, $path) {
       'template' => 'theme/fraction-table-theme',
       'pattern' => 'islandora_lab_object_fraction_table__',
       'variables' => array(
-          'islandora_object' => NULL
+          'islandora_objects' => NULL
       ),
     ),
   );
@@ -299,7 +314,7 @@ function _assay_autocomplete($string){
  */
 function fraction_object_to_array($fraction_object){
 
-
+  $assays = array();
   // query the assays and store them
   $result = db_select('labobject_assay_assay', 'a')
       ->fields('a', array('abbreviation', 'name'))

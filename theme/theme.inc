@@ -32,6 +32,17 @@ function islandora_bioinformatics_fraction_preprocess_islandora_bioinformatics_f
 	$variables['test_var'] = $xml_objects;
 }
 
+/**
+ * Preprocess hook for fraction table. this will take in an arbitrary number of fraction
+ * objects and add them to the variables array. They will then be printed out in the tpl.
+ *
+ * @param array $variables
+ *  The variables array for modification
+ */
 function islandora_lab_object_fraction_preprocess_islandora_lab_object_fraction_table(array &$variables){
-  $variables['assay'] = fraction_object_to_array($variables['islandora_object']);
+  $i = 0;
+  foreach ($variables['islandora_objects'] as $fraction){
+    $variables['fractions'][++$i] = fraction_object_to_array($fraction);
+  }
+
 }
