@@ -20,7 +20,7 @@ function islandora_lab_object_assay_specimen_form(array $form, array &$form_stat
   $specimen_query = "SELECT ?pid
                     FROM <#ri>
                     WHERE {
-                    ?pid <fedora-model:hasModel> <info:fedora/islandora:specimenCM> .
+                    ?pid <fedora-model:hasModel> <info:fedora/islandora:specimen_cmodel> .
                     }";
   $result = $tuque->repository->ri->sparqlQuery($specimen_query, 'unlimited');
   
@@ -29,7 +29,7 @@ function islandora_lab_object_assay_specimen_form(array $form, array &$form_stat
   $specimen_array = array();
   foreach ($result as $specimen) {
     // label should contain whatever we've selected as a label for these objects?
-    $specimen_array[$project["pid"]["value"]] = islandora_object_load($specimen["pid"]["value"])->label;
+    $specimen_array[$specimen["pid"]["value"]] = islandora_object_load($specimen["pid"]["value"])->label;
   }
   
   
