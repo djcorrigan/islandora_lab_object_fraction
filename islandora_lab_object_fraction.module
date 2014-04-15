@@ -101,12 +101,11 @@ function islandora_lab_object_fraction_form_related_fraction_form_alter(&$form, 
 
   $fractions = $form_state['related_objects'];
 
-  $form["header"] = array(
-    "#theme_wrapper" => theme('islandora_lab_object_fraction_table', array('islandora_object'=>$fractions[0]))
+  $form["fraction_form"] = array(
+    '#type' => 'fieldset',
+    '#title' => 'Fractions',
+    '#prefix' => theme('islandora_lab_object_fraction_table', array('islandora_object'=>$fractions[0])),
   );
-
- // return $form;
-
 
 }
 
