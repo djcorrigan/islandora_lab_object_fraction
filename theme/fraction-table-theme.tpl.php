@@ -177,7 +177,12 @@ function print_fraction_result($fraction, $assay) {
 
     if (!empty($variables['fractions'])){
       foreach ($variables['fractions'] as $fraction) {
+        echo "<pre>";
+          print_r($fraction);
+        echo "</pre>";
+
         print_fraction_row($fraction);
+
       }
     }else{
       echo "<tr><td colspan='18'>There are no fractions associated with this specimen.</td></tr>";
