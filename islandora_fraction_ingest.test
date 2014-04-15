@@ -1,19 +1,19 @@
 <?php
 
 /**
-* @file islandora_assay_ingest.test
+* @file islandora_fraction_ingest.test
 *
-* First, attempts to ingest an assay object.
+* First, attempts to ingest an fraction object.
 *
 * Then the test will purge the object.
 *
-* The pid used for the duration of this test will be islandora:test_assay
+* The pid used for the duration of this test will be islandora:test_fraction
 *
 *
 * @author Dalton Mackenzie <demackenzie@upei.ca>
 */
 
-class IslandoraAssayIngestTestCase extends IslandoraWebTestCase {
+class IslandoraFractionIngestTestCase extends IslandoraWebTestCase {
 
   /**
   * Get test information
@@ -23,9 +23,9 @@ class IslandoraAssayIngestTestCase extends IslandoraWebTestCase {
 
   public static function getInfo() {
     return array(
-      'name' => 'Assay Ingest/Purge Test',
-      'description' => 'Ingests and deletes an assay',
-      'group' => 'Islandora Assay',
+      'name' => 'Fraction Ingest/Purge Test',
+      'description' => 'Ingests and deletes an fraction',
+      'group' => 'Islandora Fraction',
     );
   }
 
@@ -45,14 +45,14 @@ class IslandoraAssayIngestTestCase extends IslandoraWebTestCase {
   }
 
   /**
-  * @function testIngestAssay()
+  * @function testIngestFraction()
   *
   * @author Dalton Mackenzie <demackenzie@upei.ca>
   *
-  * Creates an administrative user and attempts to ingest an assay.
+  * Creates an administrative user and attempts to ingest an fraction.
   */
 
-  public function testIngestAssay() {
+  public function testIngestFraction() {
     
 
     //Gets the admin user
@@ -70,48 +70,48 @@ class IslandoraAssayIngestTestCase extends IslandoraWebTestCase {
 
     $path = $path . "/"; //Add a slash because fixtures/$file will be coming after this.
 
-    //Create a assay properties array for the construction and ingestion of an assay object.
-    $assay_properties = array();   //init the array
-    $assay_properties['label'] = 'assay_test';   //Give it a label
-    $assay_properties['pid'] = 'islandora:test_assay';  //PID
-    $assay_properties['models'] = array(   //The content model used is the assayect_cmodel
-        'islandora:assay_cmodel',
+    //Create a fraction properties array for the construction and ingestion of an fraction object.
+    $fraction_properties = array();   //init the array
+    $fraction_properties['label'] = 'fraction_test';   //Give it a label
+    $fraction_properties['pid'] = 'islandora:test_fraction';  //PID
+    $fraction_properties['models'] = array(   //The content model used is the fractionect_cmodel
+        'islandora:fraction_cmodel',
         );
-    $assay_properties['parent'] = 'islandora:root'; //Just use root as the parent for now, delete it at the end of the test.
+    $fraction_properties['parent'] = 'islandora:root'; //Just use root as the parent for now, delete it at the end of the test.
 
-    $assay_datastreams = array(); // init the data streams array
+    $fraction_datastreams = array(); // init the data streams array
 
 
     //The datastreams for the object will be taken from files in the fixtures directory
     
-    $assay_datastream_dc = array(); //Init the Dublin Core datastream
-    $assay_datastream_dc['dsid'] = 'DC';  //dsid comes from the ds composite model in the xml directory
-    $assay_datastream_dc['path'] = $path . 'fixtures/example_assay_dc.xml'; //Path to the file containing the datastream
-    $assay_datastream_dc['control_group'] = 'M'; //M - managed by Fedora, X - in line XML
-    $assay_datastream_dc['mimetype'] = 'text/xml';
+    $fraction_datastream_dc = array(); //Init the Dublin Core datastream
+    $fraction_datastream_dc['dsid'] = 'DC';  //dsid comes from the ds composite model in the xml directory
+    $fraction_datastream_dc['path'] = $path . 'fixtures/example_fraction_dc.xml'; //Path to the file containing the datastream
+    $fraction_datastream_dc['control_group'] = 'M'; //M - managed by Fedora, X - in line XML
+    $fraction_datastream_dc['mimetype'] = 'text/xml';
 
-    $assay_datastream_fraction = array(); //Init the FRACTION datastream
-    $assay_datastream_fraction['dsid'] = 'FRACTION'; //dsid comes from the ds composite model in the xml directory
-    $assay_datastream_fraction['path'] = $path . 'fixtures/example_assay_fraction.xml'; //Path to the file containing the datastream
-    $assay_datastream_fraction['control_group'] = 'M'; //M - managed by Fedora, X - in line XML
-    $assay_datastream_fraction['mimetype'] = 'text/xml';
+    $fraction_datastream_fraction = array(); //Init the FRACTION datastream
+    $fraction_datastream_fraction['dsid'] = 'FRACTION'; //dsid comes from the ds composite model in the xml directory
+    $fraction_datastream_fraction['path'] = $path . 'fixtures/example_fraction_fraction.xml'; //Path to the file containing the datastream
+    $fraction_datastream_fraction['control_group'] = 'M'; //M - managed by Fedora, X - in line XML
+    $fraction_datastream_fraction['mimetype'] = 'text/xml';
 
-    $assay_datastream_relsext = array(); //Init the RELS-EXT datastream
-    $assay_datastream_relsext['dsid'] = 'RELS-EXT'; //dsid comes from the ds composite model in the xml directory
-    $assay_datastream_relsext['path'] = $path . 'fixtures/example_assay_relsext.rdf'; //Path to the file containing the datastream
-    $assay_datastream_relsext['control_group'] = 'M'; //M - managed by Fedora, X - in line XML
-    $assay_datastream_relsext['mimetype'] = 'text/xml';
+    $fraction_datastream_relsext = array(); //Init the RELS-EXT datastream
+    $fraction_datastream_relsext['dsid'] = 'RELS-EXT'; //dsid comes from the ds composite model in the xml directory
+    $fraction_datastream_relsext['path'] = $path . 'fixtures/example_fraction_relsext.rdf'; //Path to the file containing the datastream
+    $fraction_datastream_relsext['control_group'] = 'M'; //M - managed by Fedora, X - in line XML
+    $fraction_datastream_relsext['mimetype'] = 'text/xml';
 
     //Add all of the datastreams to the datastreams array
 
-    $assay_datastreams[] = $assay_datastream_dc;
-    $assay_datastreams[] = $assay_datastream_fraction;
-    $assay_datastreams[] = $assay_datastream_relsext;
+    $fraction_datastreams[] = $fraction_datastream_dc;
+    $fraction_datastreams[] = $fraction_datastream_fraction;
+    $fraction_datastreams[] = $fraction_datastream_relsext;
 
     //Ingest the object with its properties array and datastreams array.
 
     try {
-      $assay_test_object = $this->ingestConstructedObject($assay_properties, $assay_datastreams);
+      $fraction_test_object = $this->ingestConstructedObject($fraction_properties, $fraction_datastreams);
     }
     catch (RepositoryException $re) {
       echo 'Caught exception: ', $re->getMessage(), "\n";
@@ -122,6 +122,6 @@ class IslandoraAssayIngestTestCase extends IslandoraWebTestCase {
 
 
     //Delete the object
-    $this->deleteObject('islandora:test_assay', $button = NULL, $safety = FALSE);
+    $this->deleteObject('islandora:test_fraction', $button = NULL, $safety = FALSE);
   }
 }
