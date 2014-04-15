@@ -17,7 +17,9 @@
  * An islandora fraction object
  */
 function print_fraction_row($fraction) {
-
+  echo "<pre>";
+  print_r($fraction);
+  echo "</pre>";
 
   $fraction_url = "/islandora/object/{$fraction['pid']}";
   // this contains the assay abbreviations in the order we'd like
