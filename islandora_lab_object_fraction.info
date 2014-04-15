@@ -1,0 +1,9 @@
+name = "Islandora Assay Lab Object"
+description = "Extends the Islandora Bioinformatics Package to deal with Assay data."
+dependencies[] = islandora
+dependencies[] = islandora_lab_object_specimen
+files[] = islandora_assay_ingest.test
+package = Islandora Bioinformatics
+version = 7.x-dev
+core = 7.x
+configure = admin/islandora/bioinformatics/assay

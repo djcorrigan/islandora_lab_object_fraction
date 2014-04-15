@@ -1,0 +1,127 @@
+<?php
+
+/**
+* @file islandora_assay_ingest.test
+*
+* First, attempts to ingest an assay object.
+*
+* Then the test will purge the object.
+*
+* The pid used for the duration of this test will be islandora:test_assay
+*
+*
+* @author Dalton Mackenzie <demackenzie@upei.ca>
+*/
+
+class IslandoraAssayIngestTestCase extends IslandoraWebTestCase {
+
+  /**
+  * Get test information
+  *
+  * @see IslandoraWebTestCase::getInfo()
+  */
+
+  public static function getInfo() {
+    return array(
+      'name' => 'Assay Ingest/Purge Test',
+      'description' => 'Ingests and deletes an assay',
+      'group' => 'Islandora Assay',
+    );
+  }
+
+  /**
+  * Set up the test environment.
+  *
+  * @see IslandoraWebTestCase::setUp()
+  */
+
+  public function setUp() {
+    parent::setUp(array(
+      'islandora',
+      'islandora_lab_object_fraction',
+      'islandora_basic_collection',
+      )
+    );
+  }
+
+  /**
+  * @function testIngestAssay()
+  *
+  * @author Dalton Mackenzie <demackenzie@upei.ca>
+  *
+  * Creates an administrative user and attempts to ingest an assay.
+  */
+
+  public function testIngestAssay() {
+    
+
+    //Gets the admin user
+
+    $user = $this->admin;
+
+    //Logs them in.
+
+    $this->drupalLogin($user);
+
+    //Get the path to the module to prepend it to the path to fixtures,
+    //a directory containing the datastreams required to test ingest the object.
+
+    $path = drupal_get_path('module', 'islandora_lab_object_fraction');
+
+    $path = $path . "/"; //Add a slash because fixtures/$file will be coming after this.
+
+    //Create a assay properties array for the construction and ingestion of an assay object.
+    $assay_properties = array();   //init the array
+    $assay_properties['label'] = 'assay_test';   //Give it a label
+    $assay_properties['pid'] = 'islandora:test_assay';  //PID
+    $assay_properties['models'] = array(   //The content model used is the assayect_cmodel
+        'islandora:assay_cmodel',
+        );
+    $assay_properties['parent'] = 'islandora:root'; //Just use root as the parent for now, delete it at the end of the test.
+
+    $assay_datastreams = array(); // init the data streams array
+
+
+    //The datastreams for the object will be taken from files in the fixtures directory
+    
+    $assay_datastream_dc = array(); //Init the Dublin Core datastream
+    $assay_datastream_dc['dsid'] = 'DC';  //dsid comes from the ds composite model in the xml directory
+    $assay_datastream_dc['path'] = $path . 'fixtures/example_assay_dc.xml'; //Path to the file containing the datastream
+    $assay_datastream_dc['control_group'] = 'M'; //M - managed by Fedora, X - in line XML
+    $assay_datastream_dc['mimetype'] = 'text/xml';
+
+    $assay_datastream_fraction = array(); //Init the FRACTION datastream
+    $assay_datastream_fraction['dsid'] = 'FRACTION'; //dsid comes from the ds composite model in the xml directory
+    $assay_datastream_fraction['path'] = $path . 'fixtures/example_assay_fraction.xml'; //Path to the file containing the datastream
+    $assay_datastream_fraction['control_group'] = 'M'; //M - managed by Fedora, X - in line XML
+    $assay_datastream_fraction['mimetype'] = 'text/xml';
+
+    $assay_datastream_relsext = array(); //Init the RELS-EXT datastream
+    $assay_datastream_relsext['dsid'] = 'RELS-EXT'; //dsid comes from the ds composite model in the xml directory
+    $assay_datastream_relsext['path'] = $path . 'fixtures/example_assay_relsext.rdf'; //Path to the file containing the datastream
+    $assay_datastream_relsext['control_group'] = 'M'; //M - managed by Fedora, X - in line XML
+    $assay_datastream_relsext['mimetype'] = 'text/xml';
+
+    //Add all of the datastreams to the datastreams array
+
+    $assay_datastreams[] = $assay_datastream_dc;
+    $assay_datastreams[] = $assay_datastream_fraction;
+    $assay_datastreams[] = $assay_datastream_relsext;
+
+    //Ingest the object with its properties array and datastreams array.
+
+    try {
+      $assay_test_object = $this->ingestConstructedObject($assay_properties, $assay_datastreams);
+    }
+    catch (RepositoryException $re) {
+      echo 'Caught exception: ', $re->getMessage(), "\n";
+    }
+
+    //We can turn off the safety here because we know exactly what's being deleted,
+    //and it's only within the test framework, not the actual database.
+
+
+    //Delete the object
+    $this->deleteObject('islandora:test_assay', $button = NULL, $safety = FALSE);
+  }
+}
