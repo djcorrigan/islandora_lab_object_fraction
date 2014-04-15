@@ -183,11 +183,10 @@ function print_fraction_result($fraction, $assay) {
           $found = true;
           print_fraction_row($fraction);
         }
+      }
+      if (!$found) {
+        echo "<tr><td colspan='18'>There are no fractions associated with this specimen.</td></tr>";
 
-        if (!$found) {
-          echo "<tr><td colspan='18'>There are no fractions associated with this specimen.</td></tr>";
-
-        }
       }
     }else{
       echo "<tr><td colspan='18'>There are no fractions associated with this specimen.</td></tr>";
@@ -231,10 +230,9 @@ function print_fraction_result($fraction, $assay) {
           $found_c = true;
           print_fraction_row($fraction);
         }
-
-        if (!$found_c){
-          echo "<tr><td colspan='18'>There are no compounds associated with this specimen.</td></tr>";
-        }
+      }
+      if (!$found_c){
+        echo "<tr><td colspan='18'>There are no compounds associated with this specimen.</td></tr>";
       }
     }else{
       echo "<tr><td colspan='18'>There are no compounds associated with this specimen.</td></tr>";
