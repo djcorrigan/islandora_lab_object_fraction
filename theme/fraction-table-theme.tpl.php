@@ -5,7 +5,8 @@
  *  This template has a couple of functions to help me do that, although perhaps
  *  the should be moved to another location
  *
- *  Very hard coded, not condusive to adding new assays
+ *  To anyone who has to work on this in the future, I apologize. This template isn't actually
+ *  complicated, just poorly written.
  */
 
 /**
