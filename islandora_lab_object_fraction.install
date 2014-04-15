@@ -57,17 +57,17 @@
 function islandora_lab_object_fraction_schema(){
   // I have no idea if inhibitors is the correct word
   $schema["labobject_assay_assay"] = array(
-    'description' => 'Holds autocomplete data for inhibitors',
+    'description' => 'Holds autocomplete data for assays',
     'fields' => array(
       'abbreviation' => array(
-        'description' => 'Abbr for inhibitors.',
+        'description' => 'Abbr for assays.',
         'type' => 'varchar',
         'length' => 15, //15 is probably a bit long. but better than being short
         'not null' => TRUE,
         'default' => '',
       ),
       'name' => array(
-        'description' => "Full name of inhibitor",
+        'description' => "Full name of assays",
         'type' => 'varchar',
         'length' => 50,
         'not null' => TRUE,

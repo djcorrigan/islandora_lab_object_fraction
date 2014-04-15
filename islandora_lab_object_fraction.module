@@ -41,7 +41,7 @@ function islandora_object_has_fraction($object){
     FROM <#ri>
     WHERE
     {
-      {<info:fedora/islandora:assay_cmodel> ?datarel <info:fedora/$cmodel_id>} .
+      {<info:fedora/islandora:fraction_cmodel> ?datarel <info:fedora/$cmodel_id>} .
     }
   ";
 
@@ -70,24 +70,24 @@ function islandora_lab_object_fraction_forms($form_id, $args){
   switch($form_id){
     /**
      * ## Related Assays Form
-     * __Form ID:__ `related_assay_form`
+     * __Form ID:__ `related_fraction_form`
      *
      * __Form Base ID:__ `related_islandora_objects_form`
      *
      * Creates a `related_islandora_objects_form` with the `$cmodel` and `$relationships`
      * arguments set as:
      *
-     *      $cmodels = array('islandora:assay_cmodel');
+     *      $cmodels = array('islandora:fraction_cmodel');
      *      $relationships = array(FEDORA_RELS_EXT_URI => array('isPartOf'),);
      */
-    case 'related_assay_form':
-      $cmodels = array('islandora:assay_cmodel');
+    case 'related_fraction_form':
+      $cmodels = array('islandora:fraction_cmodel');
       $relationships = array(FEDORA_RELS_EXT_URI => array('isPartOf', 'isMemberOf',),);
 
       $args[] = $cmodels;
       $args[] = $relationships;
 
-      $forms['related_assay_form'] = array(
+      $forms['related_fraction_form'] = array(
         'callback' => 'related_islandora_objects_form',
         'callback arguments' => $args,
       );
@@ -96,7 +96,7 @@ function islandora_lab_object_fraction_forms($form_id, $args){
   return $forms;
 }
 
-function islandora_lab_object_fraction_form_related_assay_form_alter(&$form, &$form_state){
+function islandora_lab_object_fraction_form_related_fraction_form_alter(&$form, &$form_state){
 
 
 //  $assays = $form_state['related_objects'];
@@ -123,42 +123,42 @@ function islandora_lab_object_fraction_islandora_required_objects(IslandoraTuque
 
 
   $module_path = drupal_get_path('module', 'islandora_lab_object_fraction');
-  $assay_cm = $connection->repository->constructObject('islandora:assay_cmodel');
-  $assay_cm->owner = 'fedoraAdmin';
-  $assay_cm->label = 'Assay Content Model';
-  $assay_cm->models = 'fedora-system:ContentModel-3.0';
+  $fraction_cm = $connection->repository->constructObject('islandora:fraction_cmodel');
+  $fraction_cm->owner = 'fedoraAdmin';
+  $fraction_cm->label = 'Fraction Content Model';
+  $fraction_cm->models = 'fedora-system:ContentModel-3.0';
   // DS-COMPOSITE-MODEL Datastream.
-  $datastream = $assay_cm->constructDatastream('DS-COMPOSITE-MODEL', 'X');
+  $datastream = $fraction_cm->constructDatastream('DS-COMPOSITE-MODEL', 'X');
   $datastream->mimetype = 'text/xml';
   $datastream->setContentFromFile("$module_path/xml/content_models/islandora_lab_object_fraction_ds_composite_model.xml", FALSE);
-  $assay_cm->ingestDatastream($datastream);
+  $fraction_cm->ingestDatastream($datastream);
   // Create relationship with LabObject
-  $assay_cm->relationships->add(FEDORA_MODEL_URI, 'hasModel', 'islandora:lab_object_cmodel');
+  $fraction_cm->relationships->add(FEDORA_MODEL_URI, 'hasModel', 'islandora:lab_object_cmodel');
   // Remove word _specimen and just have datarel
-  $assay_cm->relationships->add("", 'datarel_specimen', 'islandora:specimen_cmodel');
+  $fraction_cm->relationships->add("", 'datarel_specimen', 'islandora:specimen_cmodel');
 
   // Fraction collection
-  $assay_collection = $connection->repository->constructObject('islandora:assay_collection');
-  $assay_collection->owner = 'fedoraAdmin';
-  $assay_collection->label = 'Assay Collection';
-  $assay_collection->models = 'islandora:collectionCModel';
-  $assay_collection->relationships->add(FEDORA_RELS_EXT_URI, 'isMemberOfCollection', 'islandora:root');
-  $datastream = $assay_collection->constructDatastream('COLLECTION_POLICY', 'X');
+  $fraction_collection = $connection->repository->constructObject('islandora:fraction_collection');
+  $fraction_collection->owner = 'fedoraAdmin';
+  $fraction_collection->label = 'Fraction Collection';
+  $fraction_collection->models = 'islandora:collectionCModel';
+  $fraction_collection->relationships->add(FEDORA_RELS_EXT_URI, 'isMemberOfCollection', 'islandora:root');
+  $datastream = $fraction_collection->constructDatastream('COLLECTION_POLICY', 'X');
   $datastream->mimetype = 'text/xml';
   $datastream->setContentFromFile("$module_path/xml/collection_policies/islandora_lab_object_fraction_collection_policy.xml", FALSE);
-  $assay_collection->ingestDatastream($datastream);
+  $fraction_collection->ingestDatastream($datastream);
 
 
   $specimen_cm = islandora_object_load("islandora:specimen_cmodel");
-  add_hasPart($specimen_cm, "islandora:assay_cmodel");
-  add_isPartOf($assay_cm, "islandora:specimen_cmodel");
+  add_hasPart($specimen_cm, "islandora:fraction_cmodel");
+  add_isPartOf($fraction_cm, "islandora:specimen_cmodel");
     
   return array(
     'islandora_lab_object_fraction' => array(
-      'title' => 'Assay',
+      'title' => 'Fraction',
       'objects' => array(
-          $assay_cm,
-          $assay_collection,
+          $fraction_cm,
+          $fraction_collection,
       ),
     ),
   );
@@ -171,7 +171,7 @@ function islandora_lab_object_fraction_islandora_required_objects(IslandoraTuque
 function islandora_lab_object_fraction_islandora_xml_form_builder_forms() {
   $module_path = drupal_get_path('module', 'islandora_lab_object_fraction');
   $forms = array(
-    'Assay Form' => array(
+    'Fraction Form' => array(
       'form_file' => "$module_path/xml/forms/islandora_lab_object_fraction_form.xml",
     ),
     'Compound Form' => array(
@@ -189,15 +189,15 @@ function islandora_lab_object_fraction_islandora_xml_form_builder_form_associati
   $module_path = drupal_get_path('module', 'islandora_lab_object_fraction');
   $form_assoc = array(
     'islandora_lab_object_fraction_form' => array(
-      'content_model' => "islandora:assay_cmodel",
-      'form_name' => 'Assay Form',
+      'content_model' => "islandora:fraction_cmodel",
+      'form_name' => 'Fraction Form',
       'dsid' => 'fraction',
       'transform' => '',
       'template' => FALSE,
       'title_field' => array('id'),
     ),
     'islandora_lab_object_fraction_compound_form' => array(
-      'content_model' => "islandora:assay_cmodel",
+      'content_model' => "islandora:fraction_cmodel",
       'form_name' => 'Compound Form',
       'dsid' => 'fraction',
       'transform' => '',
@@ -220,13 +220,13 @@ function islandora_lab_object_fraction_theme($existing, $type, $theme, $path) {
   return array(
     'islandora_lab_object_fraction' => array(
       'file' => 'theme/theme.inc',
-      'template' => 'theme/assay-theme',
+      'template' => 'theme/fraction-theme',
       'pattern' => 'islandora_lab_object_fraction__',
       'variables' => array('islandora_object' => NULL),
     ),
     'islandora_lab_object_fraction_table' => array(
       'file' => 'theme/theme.inc',
-      'template' => 'theme/assay-table-theme',
+      'template' => 'theme/fraction-table-theme',
       'pattern' => 'islandora_lab_object_fraction_table__',
       'variables' => array(
           'islandora_object' => NULL
@@ -241,7 +241,7 @@ function islandora_lab_object_fraction_theme($existing, $type, $theme, $path) {
  * @param $page_size
  * @return array
  */
-function islandora_lab_object_fraction_islandora_assay_cmodel_islandora_view_object($object, $page_number, $page_size) {
+function islandora_lab_object_fraction_islandora_fraction_cmodel_islandora_view_object($object, $page_number, $page_size) {
   $output = theme('islandora_lab_object_fraction_table', array('islandora_object' => $object));
 
   return array('islandora_lab_object_fraction_table' => $output);
@@ -251,7 +251,7 @@ function islandora_lab_object_fraction_islandora_assay_cmodel_islandora_view_obj
  * @param array $configuration
  * @return array
  */
-function islandora_lab_object_fraction_islandora_assay_cmodel_islandora_ingest_steps(array $configuration) {
+function islandora_lab_object_fraction_islandora_fraction_cmodel_islandora_ingest_steps(array $configuration) {
 
   return array(
     'islandora_lab_object_fraction_specimen_form' => array(
@@ -259,7 +259,7 @@ function islandora_lab_object_fraction_islandora_assay_cmodel_islandora_ingest_s
       'type' => 'form',
       'form_id' => 'islandora_lab_object_fraction_specimen_form',
       'module' => 'islandora_lab_object_fraction',
-      'file' => 'includes/assay_relate.form.inc'
+      'file' => 'includes/fraction_relate.form.inc'
     )
   );
 }
@@ -269,7 +269,7 @@ function islandora_lab_object_fraction_islandora_assay_cmodel_islandora_ingest_s
  * @author Brent Mitton
  * @param $string
  * Takes in part of a string that is currently being typed into a textbox
- * and then does a mysql LIKE query. For autocompletion on assay forms
+ * and then does a mysql LIKE query. For autocompletion on fraction forms
  */
 function _assay_autocomplete($string){
   $matches = array();
@@ -291,13 +291,13 @@ function _assay_autocomplete($string){
 }
 
 /**
- * Takes in an assay object and returns an array.
- * @param $assay_object
- *  An islandora assay object
+ * Takes in an fraction object and returns an array.
+ * @param $fraction_object
+ *  An islandora fraction object
  * @return array
- *  A simple array containing the assay information
+ *  A simple array containing the fraction information
  */
-function assay_object_to_array($assay_object){
+function fraction_object_to_array($fraction_object){
 
 
   // query the assays and store them
@@ -311,39 +311,39 @@ function assay_object_to_array($assay_object){
 
 
   $ns = "http://www.upeikerrlab.ca";
-  $assay_array = array();
+  $fraction_array = array();
 
-  $assay_xml = new SimpleXMLElement($assay_object["fraction"]->content);
+  $fraction_xml = new SimpleXMLElement($fraction_object["fraction"]->content);
 
   $i = 0;
-  foreach($assay_xml->children($ns) as $part){
+  foreach($fraction_xml->children($ns) as $part){
 
     switch ((string) $part->getName()){
       case "type":
-        $assay_array["type"] = ((string)$part) ? (string)$part:"";
+        $fraction_array["type"] = ((string)$part) ? (string)$part:"";
         break;
       case "labid":
-        $assay_array["labid"] = ((string)$part) ? (string)$part:"";
+        $fraction_array["labid"] = ((string)$part) ? (string)$part:"";
         break;
       case "weight":
-        $assay_array["weight"] = ((string)$part) ? (string)$part:"";
+        $fraction_array["weight"] = ((string)$part) ? (string)$part:"";
         break;
       case "plate":
-        $assay_array["plate"] = ((string)$part) ? (string)$part:"";
+        $fraction_array["plate"] = ((string)$part) ? (string)$part:"";
         break;
       case "location":
-        $assay_array["location"] = ((string)$part) ? (string)$part:"";
+        $fraction_array["location"] = ((string)$part) ? (string)$part:"";
         break;
       case "notes":
-        $assay_array["notes"] = ((string)$part) ? (string)$part:"";
+        $fraction_array["notes"] = ((string)$part) ? (string)$part:"";
         break;
       case "inhibitor":
 
         foreach ($assays as $key => $value) {
           if ((string) $part->name == $value){
-            $assay_array["fraction"][$key]["name"] = $value;
-            $assay_array["fraction"][$key]["result"] = ((string)$part->result) ? (string)$part->result:"";
-            $assay_array["fraction"][$key]["comment"] = ((string)$part->comment) ? (string)$part->comment:"";
+            $fraction_array["fraction"][$key]["name"] = $value;
+            $fraction_array["fraction"][$key]["result"] = ((string)$part->result) ? (string)$part->result:"";
+            $fraction_array["fraction"][$key]["comment"] = ((string)$part->comment) ? (string)$part->comment:"";
 
           }
         }
@@ -351,7 +351,7 @@ function assay_object_to_array($assay_object){
     }
   }
 
-  return $assay_array;
+  return $fraction_array;
 }
 
 
@@ -361,7 +361,7 @@ function assay_object_to_array($assay_object){
  */
 
 function islandora_lab_object_fraction_ingest(AbstractObject $parent) {
-  $collection = islandora_object_load('islandora:assay_collection');
+  $collection = islandora_object_load('islandora:fraction_collection');
   if($collection !== FALSE) {
     if (($configuration = islandora_lab_object_fraction_load_ingest_configuration($collection, $parent)) !== FALSE) {
       module_load_include('inc', 'islandora', 'includes/ingest.form');
@@ -396,7 +396,7 @@ function islandora_lab_object_fraction_load_ingest_configuration(AbstractObject 
 
   return array(
     'collection' => $collection,
-    'models' => array('islandora:assay_cmodel'), //array_keys($policy->getContentModels()),
+    'models' => array('islandora:fraction_cmodel'), //array_keys($policy->getContentModels()),
     'objects' => array($object),
     'parent' => $collection->id,
   );

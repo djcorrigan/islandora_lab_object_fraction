@@ -1,6 +1,6 @@
 <?php
 /**
- * @file manage_assay.inc
+ * @file manage_fraction.inc
  */
  
  
@@ -11,6 +11,6 @@
   * to the 'islandora/objects/%islandora_object/add/assay' URL
   * described in islandora_lab_object_fraction_menu().
   */
- function specimen_assays(AbstractObject $specimen) {
-   return "INCOMPLETE
+ function specimen_fraction(AbstractObject $specimen) {
+   return "INCOMPLETE";
  }

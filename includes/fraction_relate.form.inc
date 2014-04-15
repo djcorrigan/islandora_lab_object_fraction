@@ -2,7 +2,7 @@
 
 /*
 *
-* @file assay_relate.form.inc
+* @file fraction_relate.form.inc
 *
 * 
 *
@@ -50,14 +50,14 @@ function islandora_lab_object_fraction_specimen_form(array $form, array &$form_s
 function islandora_lab_object_fraction_specimen_submit(array $form, array &$form_state) {
   $tuque = new IslandoraTuque();
 
-  $assay_object = $form_state['islandora']['objects'][0];
+  $fraction_object = $form_state['islandora']['objects'][0];
 
   $specimen_ids = array_filter($form_state['values']['specimens']);
   
   
   foreach ($specimen_ids as $id) {
     echo $id;
-    $assay_object->relationships->add(FEDORA_RELS_EXT_URI, 'isPartOf', $id);
+    $fraction_object->relationships->add(FEDORA_RELS_EXT_URI, 'isPartOf', $id);
   }
   die;
 }
