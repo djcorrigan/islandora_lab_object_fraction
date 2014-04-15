@@ -160,7 +160,7 @@ function islandora_lab_object_fraction_islandora_required_objects(IslandoraTuque
   $datastream->setContentFromFile("$module_path/xml/collection_policies/islandora_lab_object_fraction_collection_policy.xml", FALSE);
   $fraction_collection->ingestDatastream($datastream);
 
-  add_isPartOf($fraction_cm, "islandora:specimen_cmodel");
+  $fraction_cm->relationships->add(FEDORA_RELS_EXT_URI, 'datarel_isPartOf', 'islandora:specimen_cmodel');
     
   return array(
     'islandora_lab_object_fraction' => array(
