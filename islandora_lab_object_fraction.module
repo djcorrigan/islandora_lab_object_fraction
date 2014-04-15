@@ -96,6 +96,15 @@ function islandora_lab_object_fraction_forms($form_id, $args){
   return $forms;
 }
 
+
+/**
+ * This alters the base form to suit fraction data. Unfortunately I found that the fraction
+ * data needed to be displayed too complexly for a form to be useful, so this really strips
+ * out most of the form functionality.
+ *
+ * @param $form
+ * @param $form_state
+ */
 function islandora_lab_object_fraction_form_related_fraction_form_alter(&$form, &$form_state){
 
 
@@ -213,6 +222,9 @@ function islandora_lab_object_fraction_islandora_xml_form_builder_form_associati
 
 
 /**
+ * Defines a theme for viewing a fraction as well as a theme for viewing a table
+ * of fractions
+ *
  * @param $existing
  * @param $type
  * @param $theme
