@@ -33,5 +33,9 @@ function islandora_bioinformatics_fraction_preprocess_islandora_bioinformatics_f
 }
 
 function islandora_lab_object_fraction_preprocess_islandora_lab_object_fraction_table(array &$variables){
-  $variables['fractions'] = fraction_object_to_array($variables['islandora_objects']);
+  $i = 0;
+  foreach ($variables['islandora_objects'] as $fraction){
+    $variables['fractions'][++$i] = fraction_object_to_array($fraction);
+  }
+
 }
