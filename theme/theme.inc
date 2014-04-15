@@ -5,7 +5,7 @@
 // here's where you can change the $variables array before the page is loaded
 
 
-function islandora_bioinformatics_fraction_preprocess_islandora_bioinformatics_fraction(array &$variables) {
+function islandora_lab_object_fraction_preprocess_islandora_lab_object_fraction(array &$variables) {
   
 	$islandora_object = $variables['islandora_object'];
 	$variables['edit_url'] = 'http://' . $_SERVER['SERVER_NAME'] . '/islandora/edit_form/' . urlencode($islandora_object->id) . '/fraction';
