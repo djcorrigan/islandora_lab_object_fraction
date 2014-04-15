@@ -137,6 +137,7 @@ function print_fraction_result($fraction, $assay) {
     </tr>
   </table>
 
+  <h3>Fractions</h3>
   <table class="assay-table">
     <tr>
       <td><strong>Color Codes</strong></td>
@@ -177,15 +178,53 @@ function print_fraction_result($fraction, $assay) {
 
     if (!empty($variables['fractions'])){
       foreach ($variables['fractions'] as $fraction) {
-        echo "<pre>";
-          print_r($fraction);
-        echo "</pre>";
-
-        print_fraction_row($fraction);
-
+        if ($fraction['type'] == 'fraction'){
+          print_fraction_row($fraction);
+        }
       }
     }else{
       echo "<tr><td colspan='18'>There are no fractions associated with this specimen.</td></tr>";
+    }
+
+    ?>
+  </table>
+
+
+  <h3>Compounds</h3>
+  <table class="assay-table">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Weight</th>
+      <th>P1B</th>
+      <th>HC</th>
+      <th>HE</th>
+      <th>PC</th>
+      <th>ARE</th>
+      <th>AP</th>
+      <th>SA</th>
+      <th>EF</th>
+      <th>CA</th>
+      <th>PA</th>
+      <th>MRSA</th>
+      <th>VRE</th>
+      <th>MD</th>
+      <th>MS</th>
+      <th>MT</th>
+      <th>LO</th>
+    </tr>
+    </thead>
+
+    <?php
+
+    if (!empty($variables['fractions'])){
+      foreach ($variables['fractions'] as $fraction) {
+        if ($fraction['type'] == 'compound'){
+          print_fraction_row($fraction);
+        }
+      }
+    }else{
+      echo "<tr><td colspan='18'>There are no compounds associated with this specimen.</td></tr>";
     }
 
     ?>
