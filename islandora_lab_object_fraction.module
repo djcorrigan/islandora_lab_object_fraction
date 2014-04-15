@@ -154,7 +154,7 @@ function islandora_lab_object_fraction_islandora_required_objects(IslandoraTuque
   $fraction_collection->owner = 'fedoraAdmin';
   $fraction_collection->label = 'Fraction Collection';
   $fraction_collection->models = 'islandora:collectionCModel';
-  $fraction_collection->relationships->add(FEDORA_RELS_EXT_URI, 'isMemberOfCollection', 'islandora:lab_objects_collection');
+  $fraction_collection->relationships->add(FEDORA_RELS_EXT_URI, 'isMemberOfCollection', 'islandora:lab_object_collection');
   $datastream = $fraction_collection->constructDatastream('COLLECTION_POLICY', 'X');
   $datastream->mimetype = 'text/xml';
   $datastream->setContentFromFile("$module_path/xml/collection_policies/islandora_lab_object_fraction_collection_policy.xml", FALSE);
