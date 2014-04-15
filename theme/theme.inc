@@ -13,10 +13,7 @@ function islandora_lab_object_fraction_preprocess_islandora_lab_object_fraction(
 	$ns = "http://www.upeikerrlab.ca";
 
 	$obj = new SimpleXMLElement($islandora_object['fraction']->content);
-  echo "<pre>";
-  echo "HELLLLO";
-  print_r ($islandora_object['fraction']->content);
-  echo "</pre>";
+
 	$xml_objects = $obj->children($ns);
 
 	$variables['type'] = $xml_objects->type;
