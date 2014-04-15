@@ -43,10 +43,10 @@ $path = drupal_get_path('module', 'islandora_bioinformatics_fraction');
 		<tbody>
 			<?php
 				$row_count = 1;
-				foreach ($variables['inhibitors'] as $key => $value):
+				foreach ($variables['assays'] as $assay):
 					$row_class = ($row_count++ % 2 == 0 ? 'even' : 'odd'); ?>
 					<tr class="<?php echo $row_class;?>">
-						<td><?php echo $value->name;?></td><td><?php echo $value->result;?></td><td><?php echo $value->comment;?></td>
+						<td><?php echo $assay['name'];?></td><td><?php echo $assay['result'];?></td><td><?php echo $assay['comment'];?></td>
 					</tr>
 			<?php endforeach; ?>
 		</tbody>
