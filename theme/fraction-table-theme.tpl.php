@@ -49,8 +49,7 @@ function print_fraction_result($fraction, $assay) {
       $css_class = ($fraction["fraction"][$assay]["result"]) ? "assay-".$fraction["fraction"][$assay]["result"]:"assay-none";
       if ($css_class == "assay-inactive"){
         echo "<td class='$css_class'>I</td>";
-
-      }else
+      }else{
         echo "<td class='$css_class'></td>";
       }
     }else{
