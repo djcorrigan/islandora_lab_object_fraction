@@ -26,9 +26,6 @@ $path = drupal_get_path('module', 'islandora_bioinformatics_fraction');
 </div>
 
 <div class="fraction-inhibitors">
-	<div class="m-btn-group">
-	<a href="/islandora/object/islandora:422/manage/overview/ingest" class="m-btn green">Add a New Fraction</a>
-	</div>
 
 	<div class="m-btn-group">
 	<a href="<?php echo $variables['edit_url']; ?>" class="m-btn blue">Edit This Fraction</a>
