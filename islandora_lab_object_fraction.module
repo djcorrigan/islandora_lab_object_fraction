@@ -100,13 +100,20 @@ function islandora_lab_object_fraction_form_related_fraction_form_alter(&$form, 
 
 
   $fractions = $form_state['related_objects'];
+  $options = array();
 
-  $form['table'] = array();
-  $form["fraction_form"] = array(
-    '#type' => 'fieldset',
-    '#title' => 'Fractions',
-    '#prefix' => theme('islandora_lab_object_fraction_table', array('islandora_object'=>$fractions[0])),
+  foreach ($fractions as $fraction){
+    $options[$fraction->id] = array(
+      'fraction' => theme('islandora_lab_object_fraction_table', array('islandora_object'=>$fraction))
+    );
+  }
+
+
+  $form['table'] = array(
+    "#type" => "tableselect",
+    "#options"=> $options,
   );
+
 
 }
 
