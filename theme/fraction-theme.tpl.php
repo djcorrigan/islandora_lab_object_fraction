@@ -23,12 +23,6 @@ $path = drupal_get_path('module', 'islandora_bioinformatics_fraction');
 		</tbody>
 	</table>
 
-	<table>
-		<tbody>
-			<tr><td class="fraction-info-label">Parent Record</td><td></td></tr>
-			<tr><td class="fraction-info-label">Related Fractions</td><td></td></tr>
-		</tbody>
-	</table>
 </div>
 
 <div class="fraction-inhibitors">
