@@ -54,7 +54,7 @@
  * installed and uninstalled. Upon install it will create the db table defined
  * and on uninstallation it will remove it.
  */
-function islandora_lab_object_fraction_schema(){
+function islandora_lab_object_fraction_schema() {
   // I have no idea if inhibitors is the correct word
   $schema["labobject_assay_assay"] = array(
     'description' => 'Holds autocomplete data for assays',
@@ -80,7 +80,7 @@ function islandora_lab_object_fraction_schema(){
   return $schema;
 }
 
-function _islandora_lab_object_fraction_default_insert($abbr, $name){
+function _islandora_lab_object_fraction_default_insert($abbr, $name) {
   $sql = "INSERT INTO {labobject_assay_assay} (abbreviation, name)
           VALUES ('$abbr', '$name')";
 
