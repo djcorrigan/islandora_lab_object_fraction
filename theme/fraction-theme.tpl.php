@@ -49,3 +49,16 @@ $path = drupal_get_path('module', 'islandora_bioinformatics_fraction');
 		</tbody>
 	</table>
 </div>
+
+<div class="related-projects">
+  <table>
+    <tbody>
+    <tr><th class="specimen-info-heading">Related Specimens</th></tr>
+    <?php if(isset($variables['related_specimens'])): ?>
+      <?php foreach($variables['related_specimens'] as $key => $specimen): ?>
+        <tr><td class="specimen-info-label"><?php print l($specimen, "islandora/object/{$key}") ?> </td></tr>
+      <?php endforeach; ?>
+    <?php endif; ?>
+    </tbody>
+  </table>
+</div>
