@@ -15,7 +15,7 @@
  *  refactor
  * @return array
  */
-function islandora_lab_object_fraction_menu(){
+function islandora_lab_object_fraction_menu() {
   return array(
     'assay/assays' => array(
       'title' => "Autocomplete Assays",
@@ -33,7 +33,7 @@ function islandora_lab_object_fraction_menu(){
  * @return bool
  * @todo assay_cmodel to fraction_cmodel on refactor
  */
-function islandora_object_has_fraction($object){
+function islandora_object_has_fraction($object) {
   $cmodel_id = $object->models[0];
   $query = "
     PREFIX fedora-model: <info:fedora/fedora-system:def/model#>
@@ -54,7 +54,7 @@ function islandora_object_has_fraction($object){
     return FALSE;
 }
 
-function islandora_lab_object_fraction_forms($form_id, $args){
+function islandora_lab_object_fraction_forms($form_id, $args) {
   /**
    * @author Nolan Phillips ncphillips@upei.ca
    *
@@ -67,7 +67,7 @@ function islandora_lab_object_fraction_forms($form_id, $args){
    * This function is used to associate a new Form ID with an existing form constructor.
    */
   $forms = array();
-  switch($form_id){
+  switch ($form_id) {
     /**
      * ## Related Assays Form
      * __Form ID:__ `related_fraction_form`
@@ -82,7 +82,7 @@ function islandora_lab_object_fraction_forms($form_id, $args){
      */
     case 'related_fraction_form':
       $cmodels = array('islandora:fraction_cmodel');
-      $relationships = array(FEDORA_RELS_EXT_URI => array('isPartOf', 'isMemberOf',),);
+      $relationships = array(FEDORA_RELS_EXT_URI => array('isPartOf', 'isMemberOf', ), );
 
       $args[] = $cmodels;
       $args[] = $relationships;
@@ -105,7 +105,7 @@ function islandora_lab_object_fraction_forms($form_id, $args){
  * @param $form
  * @param $form_state
  */
-function islandora_lab_object_fraction_form_related_fraction_form_alter(&$form, &$form_state){
+function islandora_lab_object_fraction_form_related_fraction_form_alter(&$form, &$form_state) {
 
 
   $fractions = $form_state['related_objects'];
@@ -115,7 +115,7 @@ function islandora_lab_object_fraction_form_related_fraction_form_alter(&$form, 
 
   $form['table'] = array(
     "#type" => "hidden",
-    "#prefix"=> theme('islandora_lab_object_fraction_table', array('islandora_objects' => $fractions))
+    "#prefix"=> theme('islandora_lab_object_fraction_table', array('islandora_objects' => $fractions) )
   );
 
 
@@ -282,7 +282,7 @@ function islandora_lab_object_fraction_islandora_fraction_cmodel_islandora_inges
  * Takes in part of a string that is currently being typed into a textbox
  * and then does a mysql LIKE query. For autocompletion on fraction forms
  */
-function _assay_autocomplete($string){
+function _assay_autocomplete($string) {
   $matches = array();
 
    $or = db_or()
@@ -308,7 +308,7 @@ function _assay_autocomplete($string){
  * @return array
  *  A simple array containing the fraction information
  */
-function fraction_object_to_array($fraction_object){
+function fraction_object_to_array($fraction_object) {
 
   $assays = array();
   // query the assays and store them
@@ -316,7 +316,7 @@ function fraction_object_to_array($fraction_object){
       ->fields('a', array('abbreviation', 'name'))
       ->execute();
 
-  foreach($result as $row){
+  foreach ($result as $row) {
     $assays[$row->abbreviation] = $row->name;
   }
 
@@ -327,9 +327,9 @@ function fraction_object_to_array($fraction_object){
   $fraction_xml = new SimpleXMLElement($fraction_object["fraction"]->content);
 
   $i = 0;
-  foreach($fraction_xml->children($ns) as $part){
+  foreach ($fraction_xml->children($ns) as $part) {
 
-    switch ((string) $part->getName()){
+    switch ((string) $part->getName()) {
       case "type":
         $fraction_array["type"] = ((string)$part) ? (string)$part:"";
         break;
@@ -351,7 +351,7 @@ function fraction_object_to_array($fraction_object){
       case "inhibitor":
 
         foreach ($assays as $key => $value) {
-          if ((string) $part->name == $value){
+          if ((string) $part->name == $value) {
             $fraction_array["fraction"][$key]["name"] = $value;
             $fraction_array["fraction"][$key]["result"] = ((string)$part->result) ? (string)$part->result:"";
             $fraction_array["fraction"][$key]["comment"] = ((string)$part->comment) ? (string)$part->comment:"";
@@ -373,7 +373,7 @@ function fraction_object_to_array($fraction_object){
 
 function islandora_lab_object_fraction_ingest(AbstractObject $parent) {
   $collection = islandora_object_load('islandora:fraction_collection');
-  if($collection !== FALSE) {
+  if ($collection !== FALSE) {
     if (($configuration = islandora_lab_object_fraction_load_ingest_configuration($collection, $parent)) !== FALSE) {
       module_load_include('inc', 'islandora', 'includes/ingest.form');
       return drupal_get_form('islandora_ingest_form', $configuration);
