@@ -34,7 +34,7 @@ $path = drupal_get_path('module', 'islandora_bioinformatics_fraction');
 	<table>
 		<thead>
 			<tr>
-				<th class="fraction-info-label">Inhibitor</th><th class="fraction-info-label">Result</th><th class="fraction-info-label">Comment</th>
+				<th class="fraction-info-label">Assay</th><th class="fraction-info-label">Result</th><th class="fraction-info-label">Comment</th>
 			</tr>
 		</thead>
 		<tbody>
