@@ -29,7 +29,7 @@ function islandora_lab_object_fraction_preprocess_islandora_lab_object_fraction(
 	foreach ($xml_objects->inhibitor as $assay) {
     $variables['assays'][$i]['name'] = (string) $assay->name;
     $variables['assays'][$i]['result'] = (string) $assay->result;
-    $variables['assays'][$i]['comment'] = (string)$assay->comment;
+    $variables['assays'][$i]['comment'] = $assay->comment;
     $i++;
 	}
 

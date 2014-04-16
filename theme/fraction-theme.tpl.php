@@ -8,18 +8,25 @@
  * function.  Elements such as labels and buttons can be added here
  */
 
+$colors['inactive'] = 'black';
+$colors['low'] = 'gray';
+$colors['medium'] = 'orange';
+$colors['strong'] = 'gold';
+$colors['hit'] = 'red';
+
+
 $path = drupal_get_path('module', 'islandora_bioinformatics_fraction');
 ?>
 
 <div class="fraction-info">
 	<table>
 		<tbody>
-			<tr><td class="fraction-info-label">Fraction ID</td><td><?php echo $variables['id'];?></td></tr>
-			<tr><td class="fraction-info-label">Lab ID</td><td><?php echo $variables['lab_id'];?></td></tr>
-			<tr><td class="fraction-info-label">Plate</td><td><?php echo $variables['plate'];?></td></tr>
-			<tr><td class="fraction-info-label">Weight</td><td><?php echo $variables['weight'];?></td></tr>
-			<tr><td class="fraction-info-label">Location</td><td><?php echo $variables['location'];?></td></tr>
-			<tr><td class="fraction-info-label">Notes</td><td><?php echo $variables['notes'];?></td></tr>
+			<tr><td class="fraction-info-label">Fraction ID</td><td class="fraction-info-content"><?php echo $variables['id'];?></td></tr>
+			<tr><td class="fraction-info-label">Lab ID</td><td class="fraction-info-content"><?php echo $variables['lab_id'];?></td></tr>
+			<tr><td class="fraction-info-label">Plate</td><td class="fraction-info-content"><?php echo $variables['plate'];?></td></tr>
+			<tr><td class="fraction-info-label">Weight</td><td class="fraction-info-content"><?php echo $variables['weight'];?></td></tr>
+			<tr><td class="fraction-info-label">Location</td><td class="fraction-info-content"><?php echo $variables['location'];?></td></tr>
+			<tr><td class="fraction-info-label">Notes</td><td class="fraction-info-content"><?php echo $variables['notes'];?></td></tr>
 		</tbody>
 	</table>
 
@@ -34,16 +41,31 @@ $path = drupal_get_path('module', 'islandora_bioinformatics_fraction');
 	<table>
 		<thead>
 			<tr>
-				<th class="fraction-info-label">Inhibitor</th><th class="fraction-info-label">Result</th><th class="fraction-info-label">Comment</th>
+				<th class="fraction-info-label">Inhibitor</th>
+				<th class="fraction-info-label">Result</th>
+				<th class="fraction-info-label">Comment</th>
 			</tr>
 		</thead>
 		<tbody>
 			<?php
 				$row_count = 1;
 				foreach ($variables['assays'] as $assay):
-					$row_class = ($row_count++ % 2 == 0 ? 'even' : 'odd'); ?>
+					$row_class = ($row_count++ % 2 == 0 ? 'even' : 'odd'); 
+					$result_color = $colors[$assay['result']];
+			?>
 					<tr class="<?php echo $row_class;?>">
-						<td><?php echo $assay['name'];?></td><td><?php echo $assay['result'];?></td><td><?php echo $assay['comment'];?></td>
+						<td><?php echo $assay['name'];?></td>
+						<td style="color:<?php echo $result_color;?>"><?php echo $assay['result'];?></td>
+						<td>
+						<?php
+							if (sizeof($assay['comment']) > 1) 
+								foreach ($assay['comment'] as $comment)
+									echo '<li>' . $comment . '</li>';
+							else
+								echo $assay['comment'];
+							
+						?>
+						</td>
 					</tr>
 			<?php endforeach; ?>
 		</tbody>
